@@ -15,7 +15,7 @@ examples_linkedlist = [
 
 
 @pytest.mark.parametrize("l1, l2, output_true", examples_linkedlist)
-def test_twoSum_naive(
+def test_twoSum(
     l1: p002.ListNode | None,
     l2: p002.ListNode | None,
     output_true: p002.ListNode | None,
