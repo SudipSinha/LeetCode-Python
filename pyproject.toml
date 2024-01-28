@@ -1,0 +1,36 @@
+[project]
+name = "LeetCode"
+version = "0.1.0"
+description = "My solutions to LeetCode problems in Python"
+authors = [
+    {name = "Sudip Sinha", email = "SudipSinha.Bappa@Gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "hypothesis>=6.97.1",
+    "coverage>=7.4.1",
+]
+format = [
+    "black>=24.1.0",
+]
+lint = [
+    "mypy>=1.8.0",
+    "ruff>=0.1.14",
+]
+dock = [
+    "mkdocs>=1.5.3",
+]
