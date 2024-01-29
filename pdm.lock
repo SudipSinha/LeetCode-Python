@@ -5,7 +5,7 @@
 groups = ["default", "test", "lint", "dock", "format"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:35b1bc1bcc376e1e50833a48995dd1cdd41bbbbf13ad65d6709b5494cdd73fdc"
+content_hash = "sha256:c5efcfc15b7ef035c0e822d501e4ad846d36a7c7b00e4a57aa9cf744926cee33"
 
 [[package]]
 name = "attrs"

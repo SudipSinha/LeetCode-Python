@@ -1,5 +1,5 @@
 class Solution:
-    def lengthOflength__maxSubstring_naive(self, s: str) -> int:
+    def lengthOfLongestSubstring_naive(self, s: str) -> int:
         """Time complexity: O(n^2), Space complexity: O(1)."""
         length__max = 0
         for i in range(len(s)):
@@ -11,7 +11,7 @@ class Solution:
             length__max = max(current, length__max)
         return length__max
 
-    def lengthOflength__maxSubstring_hashmap(self, s: str) -> int:
+    def lengthOfLongestSubstring_hashmap(self, s: str) -> int:
         """Time complexity: O(n^2), Space complexity: O(1)."""
         length__max = 0
         for idx_start, letter_start in enumerate(s):
@@ -25,11 +25,11 @@ class Solution:
             length__max = max(current, length__max)
         return length__max
 
-    def lengthOflength__maxSubstring_slidingwindow(self, s: str) -> int:
+    def lengthOfLongestSubstring_slidingwindow(self, s: str) -> int:
         """Time complexity: O(n), Space complexity: O(1)."""
         head = 0
         length__max = 0
-        seen = {}
+        seen: dict[str, int] = {}
         for tail, letter in enumerate(s):
             if letter in seen and head <= seen[letter]:
                 head = seen[letter] + 1

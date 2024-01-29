@@ -19,7 +19,7 @@ class Solution:
 
     def twoSum_hashmap_1pass(self, nums: list[int], target: int) -> set[int]:
         """Time complexity: O(n), Space complexity: O(n)."""
-        hashmap = {}
+        hashmap: dict[int, int] = {}
         for i in range(len(nums)):
             complement = target - nums[i]
             if complement in hashmap and hashmap[complement] != i:

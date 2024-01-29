@@ -29,8 +29,8 @@ format = [
     "black>=24.1.0",
 ]
 lint = [
-    "mypy>=1.8.0",
     "ruff>=0.1.14",
+    "mypy>=1.8.0",
 ]
 dock = [
     "mkdocs>=1.5.3",

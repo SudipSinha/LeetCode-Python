@@ -1,8 +1,8 @@
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+        self.val: int = val
+        self.next: ListNode = next
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ListNode):
