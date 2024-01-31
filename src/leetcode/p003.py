@@ -1,3 +1,9 @@
+"""Longest Substring Without Repeating Characters
+
+Given a string `s`, find the length of the longest substring without repeating characters.
+"""
+
+
 class Solution:
     def lengthOfLongestSubstring_naive(self, s: str) -> int:
         """Time complexity: O(n^2), Space complexity: O(1)."""

@@ -10,7 +10,7 @@ examples_list = [
 ]
 
 examples_linkedlist = [
-    tuple(p002._generate_linkedlist(digits=digits) for digits in example)
+    tuple(p002._generate_linkedlist(digits=digits) for digits in example)  # type: ignore
     for example in examples_list
 ]
 
