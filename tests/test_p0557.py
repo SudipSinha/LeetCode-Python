@@ -1,5 +1,5 @@
 import pytest
-from leetcode import p557
+from leetcode import p0557
 
 
 examples = [
@@ -10,5 +10,5 @@ examples = [
 
 @pytest.mark.parametrize("s, output_true", examples)
 def test_reverseWords(s: str, output_true: str):
-    output_calc = p557.Solution().reverseWords(s)
+    output_calc = p0557.Solution().reverseWords(s)
     assert output_calc == output_true
