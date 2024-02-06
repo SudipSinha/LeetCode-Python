@@ -5,7 +5,9 @@ description = "My solutions to LeetCode problems in Python"
 authors = [
     {name = "Sudip Sinha", email = "SudipSinha.Bappa@Gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "numpy>=1.26.3",
+]
 requires-python = ">=3.12"
 readme = "README.md"
 license = {text = "MIT"}
