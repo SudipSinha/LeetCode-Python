@@ -44,13 +44,14 @@ class Solution:
         memo = [0 for _ in range(n + 1)]  # n -> Fib(n)
         memo[1] = 1
 
-        def fib_dp_aux(m: int, memo: list[int]):
+        def fib_dp_aux(m: int):
+            nonlocal memo
             if m in {0, 1}:
                 return m
-            memo[m] = fib_dp_aux(m - 1, memo) + fib_dp_aux(m - 2, memo)
+            memo[m] = fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
             return memo[m]
 
-        return fib_dp_aux(n, memo)
+        return fib_dp_aux(n)
 
     def fib_dp_dict(self, n: int) -> int:
         """Dynamic programming solution.
@@ -58,9 +59,10 @@ class Solution:
         """
         memo = {0: 0, 1: 1}  # n -> Fib(n)
 
-        def fib_dp_aux(m: int, memo: dict[int, int]):
+        def fib_dp_aux(m: int):
+            nonlocal memo
             if m in memo:
                 return memo[m]
-            return fib_dp_aux(m - 1, memo) + fib_dp_aux(m - 2, memo)
+            return fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
 
-        return fib_dp_aux(n, memo)
+        return fib_dp_aux(n)

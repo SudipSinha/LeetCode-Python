@@ -5,7 +5,7 @@ Given a string `s`, return the longest palindromic substring in `s`.
 
 
 def _is_palindrome_substr(s: str, idx_start: int = 0, substr__len: int = -1) -> bool:
-    """Theoretically this should be faster, but Python :\ """
+    """Theoretically this should be faster, but Python :("""
     substr__len = len(s) if substr__len == -1 else substr__len
     for i in range(substr__len // 2):
         if s[idx_start + i] != s[idx_start + substr__len - i - 1]:
