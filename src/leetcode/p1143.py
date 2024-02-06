@@ -34,7 +34,7 @@ class Solution:
         def longestCommonSubsequence_aux(idx1: int, idx2: int) -> LCS:
             nonlocal lengths
             nonlocal subseqs
-            
+
             if lengths[idx1, idx2] >= 0:
                 return {
                     "length": lengths[idx1, idx2],

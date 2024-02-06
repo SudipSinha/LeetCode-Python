@@ -17,12 +17,11 @@ class Solution:
                 sum__max = sum__cur
         return sum__max / k
 
-
-    def findMaxAverage_smart(self, nums: list[int], k: int) -> float:
-        """Update the sum intelligently.
+    def findMaxAverage_sw(self, nums: list[int], k: int) -> float:
+        """Sliding window approach.
         Time complexity: O(n), Space complexity: O(n).
         """
-        sum__cur = sum(nums[0 : k])
+        sum__cur = sum(nums[0:k])
         sum__max = sum__cur
         for i in range(1, len(nums) - k + 1):
             sum__cur = sum__cur - nums[i - 1] + nums[i + k - 1]

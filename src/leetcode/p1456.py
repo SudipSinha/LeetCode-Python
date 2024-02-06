@@ -1,0 +1,36 @@
+"""Maximum Number of Vowels in a Substring of Given Length
+
+Given a string s and an integer k, return the maximum number of vowel letters in any substring of s with length k.
+
+Vowel letters in English are 'a', 'e', 'i', 'o', and 'u'.
+
+Constraints:
+    `1 <= s.length <= 105`
+    `s` consists of lowercase English letters.
+    `1 <= k <= s.length`
+"""
+
+
+class Solution:
+    def maxVowels_sw(self, s: str, k: int) -> int:
+        """Sliding window approach.
+        Time complexity: O(n), Space complexity: O(n).
+        """
+        vowels = {"a", "e", "i", "o", "u"}
+
+        n_vowels__cur = sum(1 for char in s[0:k] if char in vowels)
+        n_vowels__max = n_vowels__cur
+
+        for i in range(1, len(s) - k + 1):
+            if s[i - 1] in vowels:
+                n_vowels__cur -= 1
+            if s[i + k - 1] in vowels:
+                n_vowels__cur += 1
+
+            if n_vowels__cur > n_vowels__max:
+                n_vowels__max = n_vowels__cur
+
+        return n_vowels__max
+
+
+print(Solution().maxVowels_sw("novowels", 1))
