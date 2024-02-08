@@ -24,6 +24,7 @@ distribution = true
 test = [
     "pytest>=8.0.0",
     "coverage>=7.4.1",
+    "hypothesis>=6.98.3",
 ]
 format = [
     "black>=24.1.1",
