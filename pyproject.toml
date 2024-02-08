@@ -29,7 +29,6 @@ test = [
 format = [
     "black>=24.1.1",
 ]
-
 lint = [
     "ruff>=0.2.1",
     "mypy>=1.8.0",
