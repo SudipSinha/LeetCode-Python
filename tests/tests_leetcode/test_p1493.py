@@ -18,5 +18,11 @@ examples = [
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_longestSubarray_sw(nums: list[int], output_true: int):
-    output_calc = p1493.Solution().longestSubarray(nums=nums)
+    output_calc = p1493.Solution().longestSubarray_sw(nums=nums)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("nums, output_true", examples)
+def test_longestSubarray_alt(nums: list[int], output_true: int):
+    output_calc = p1493.Solution().longestSubarray_alt(nums=nums)
     assert output_calc == output_true

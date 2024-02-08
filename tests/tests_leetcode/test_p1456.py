@@ -10,6 +10,6 @@ examples = [
 
 
 @pytest.mark.parametrize("s, k, output_true", examples)
-def test_maxVowels(s: str, k: int, output_true: int):
+def test_maxVowels_sw(s: str, k: int, output_true: int):
     output_calc = p1456.Solution().maxVowels_sw(s=s, k=k)
     assert output_calc == output_true

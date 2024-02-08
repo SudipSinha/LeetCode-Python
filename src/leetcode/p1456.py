@@ -3,11 +3,6 @@
 Given a string s and an integer k, return the maximum number of vowel letters in any substring of s with length k.
 
 Vowel letters in English are 'a', 'e', 'i', 'o', and 'u'.
-
-Constraints:
-    `1 <= s.length <= 105`
-    `s` consists of lowercase English letters.
-    `1 <= k <= s.length`
 """
 
 
@@ -16,7 +11,7 @@ class Solution:
         """Sliding window approach.
         Time complexity: O(n), Space complexity: O(n).
         """
-        vowels = {"a", "e", "i", "o", "u"}
+        vowels = {"A", "E", "I", "O", "U", "a", "e", "i", "o", "u"}
 
         n_vowels__cur = sum(1 for char in s[0:k] if char in vowels)
         n_vowels__max = n_vowels__cur
@@ -31,6 +26,3 @@ class Solution:
                 n_vowels__max = n_vowels__cur
 
         return n_vowels__max
-
-
-print(Solution().maxVowels_sw("novowels", 1))
