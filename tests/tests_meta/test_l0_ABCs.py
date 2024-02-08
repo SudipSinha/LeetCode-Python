@@ -1,11 +1,11 @@
 import pytest
 from meta import l0_ABCs
 
-examples = {
+examples = [
     (1, 2, 3, 6),
     (100, 100, 100, 300),
     (85, 16, 93, 194),
-}
+]
 
 
 @pytest.mark.parametrize("A, B, C, output_true", examples)

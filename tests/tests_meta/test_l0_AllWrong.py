@@ -1,10 +1,10 @@
 import pytest
 from meta import l0_AllWrong
 
-examples = {
+examples = [
     (3, "ABA", "BAB"),
     (5, "BBBBB", "AAAAA"),
-}
+]
 
 
 @pytest.mark.parametrize("N, C, output_true", examples)
