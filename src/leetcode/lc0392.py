@@ -18,6 +18,18 @@ class Solution:
                 return False
         return True
 
+    def isSubsequence_2ptr(self, s: str, t: str) -> bool:
+        """Two pointer approach. Copied from:
+        https://leetcode.com/problems/is-subsequence/solutions/4074367/93-76-two-pointers-dp/
+        Time complexity: O(mn), Space complexity: O(1).
+        """
+        idx_s, idx_t = 0, 0
+        while idx_s < len(s) and idx_t < len(t):
+            if s[idx_s] == t[idx_t]:
+                idx_s += 1
+            idx_t += 1
+        return idx_s == len(s)
+
     def isSubsequence_dp(self, s: str, t: str) -> bool:
         """Dynamic programming solution. Copied from:
         https://leetcode.com/problems/is-subsequence/solutions/4074367/93-76-two-pointers-dp/
@@ -27,7 +39,7 @@ class Solution:
         for i in range(len(t) - 1, -1, -1):
             nxt[i] = nxt[i + 1].copy()
             nxt[i][t[i]] = i + 1
-        
+
         i = 0
         for c in s:
             if c in nxt[i]:
