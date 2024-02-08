@@ -1,5 +1,5 @@
 import pytest
-from leetcode import p0643
+from leetcode import lc0643
 
 
 examples = [
@@ -10,11 +10,11 @@ examples = [
 
 @pytest.mark.parametrize("nums, k, output_true", examples)
 def test_findMaxAverage_naive(nums: list[int], k: int, output_true: int):
-    output_calc = p0643.Solution().findMaxAverage_naive(nums=nums, k=k)
+    output_calc = lc0643.Solution().findMaxAverage_naive(nums=nums, k=k)
     assert abs(output_calc - output_true) < 1e-5
 
 
 @pytest.mark.parametrize("nums, k, output_true", examples)
 def test_findMaxAverage_smart(nums: list[int], k: int, output_true: int):
-    output_calc = p0643.Solution().findMaxAverage_sw(nums=nums, k=k)
+    output_calc = lc0643.Solution().findMaxAverage_sw(nums=nums, k=k)
     assert abs(output_calc - output_true) < 1e-5

@@ -1,5 +1,5 @@
 import pytest
-from leetcode import p0004
+from leetcode import lc0004
 
 
 examples = [
@@ -12,5 +12,5 @@ examples = [
 def test_findMedianSortedArrays_naive(
     nums1: list[int], nums2: list[int], output_true: float
 ):
-    output_calc = p0004.Solution().findMedianSortedArrays_naive(nums1, nums2)
+    output_calc = lc0004.Solution().findMedianSortedArrays_naive(nums1, nums2)
     assert output_calc == output_true

@@ -5,6 +5,7 @@ class Solution:
         Two pointer technique with replacement with zeros.
         Time complexity: O(n), Space complexity: O(1).
         """
+
         pos_nonzero = 0
 
         for i in range(len(nums)):
@@ -20,6 +21,7 @@ class Solution:
         Two pointer technique with swapping.
         Time complexity: O(n), Space complexity: O(1).
         """
+
         slow = 0
         for fast in range(len(nums)):
             if nums[fast] != 0 and nums[slow] == 0:
