@@ -24,7 +24,6 @@ class Solution:
 
         for right in range(len(nums)):
             zeros += 1 - nums[right]
-            print(f"Update:({left}, {right}): zeros={zeros}")
             while zeros > k:
                 zeros -= 1 - nums[left]
                 left += 1
@@ -67,8 +66,3 @@ class Solution:
             if sum__cur > sum__max:
                 sum__max = sum__cur
         return sum__max
-
-
-print(Solution().longestSubarray_sw([1, 1, 0, 0, 1, 1, 1, 0, 1]))
-# print(Solution().longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1]))
-# print(Solution().longestSubarray([1, 0, 1, 0]))

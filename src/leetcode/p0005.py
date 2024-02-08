@@ -26,7 +26,3 @@ class Solution:
                 if _is_palindrome(s[idx_start : idx_start + substr__len]):
                     return s[idx_start : idx_start + substr__len]
         return ""
-
-
-print(_is_palindrome_substr("babab"))
-print(_is_palindrome_substr("bababa"))
