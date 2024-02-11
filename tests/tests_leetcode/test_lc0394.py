@@ -19,3 +19,9 @@ def test_decodeString_1pass(s: str, output_true: str):
 def test_decodeString_backandforth(s: str, output_true: str):
     output_calc = lc0394.Solution().decodeString_backandforth(s=s)
     assert output_calc == output_true
+
+
+@pytest.mark.parametrize("s, output_true", examples)
+def test_decodeString_recursive(s: str, output_true: str):
+    output_calc = lc0394.Solution().decodeString_recursive(s=s)
+    assert output_calc == output_true
