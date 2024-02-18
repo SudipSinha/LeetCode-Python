@@ -1,6 +1,6 @@
 """Decode String
 
-Link: https://leetcode.com/problems/decode-string/description/
+Link: https://leetcode.com/problems/decode-string/
 
 Given an encoded string, return its decoded string.
 
@@ -14,8 +14,30 @@ class Solution:
     def __init__(self) -> None:
         self.idx = 0
 
+    def decodeString_recursive(self, s: str) -> str:
+        """Time complexity: O(|s|), space complexity: O(|decoded|).
+        Stolen from: https://walkccc.me/LeetCode/problems/0394/
+        """
+
+        decoded = ""
+        while self.idx < len(s) and s[self.idx] != "]":
+            if s[self.idx].isdigit():
+                #   Multiplier
+                multiplier = 0
+                while self.idx < len(s) and s[self.idx].isdigit():
+                    multiplier = multiplier * 10 + int(s[self.idx])
+                    self.idx += 1
+                self.idx += 1  # Skip "["
+                decoded_sub = self.decodeString_recursive(s)
+                decoded += multiplier * decoded_sub
+                self.idx += 1  # Skip "]"
+            else:
+                decoded += s[self.idx]
+                self.idx += 1
+        return decoded
+
     def decodeString_1pass(self, s: str) -> str:
-        """Time complexity: O(|s|), Space complexity: O(|decoded|)."""
+        """Time complexity: O(|s|), space complexity: O(|decoded|)."""
         stack: list[tuple[str, int]] = []  # (prevStr, repeatCount)
 
         substr__cur = ""
@@ -37,7 +59,7 @@ class Solution:
         return substr__cur
 
     def decodeString_backandforth(self, s: str) -> str:
-        """Time complexity: O(|s|), Space complexity: O(|decoded|)."""
+        """Time complexity: O(|s|), space complexity: O(|decoded|)."""
         stack: list[str] = []
 
         for i, c in enumerate(s):
@@ -57,31 +79,5 @@ class Solution:
                 stack.append(substr * int(multiplier))
             else:
                 stack.append(c)
-            print(stack)
 
         return "".join(stack)
-
-    def decodeString_recursive(self, s: str) -> str:
-        """Time complexity: O(|s|), Space complexity: O(|decoded|).
-        Stolen from: https://walkccc.me/LeetCode/problems/0394/
-        """
-
-        decoded = ""
-        while self.idx < len(s) and s[self.idx] != "]":
-            if s[self.idx].isdigit():
-                print(f"{s}: Digit found at {self.idx}")
-                #   Multiplier
-                multiplier = 0
-                while self.idx < len(s) and s[self.idx].isdigit():
-                    multiplier = multiplier * 10 + int(s[self.idx])
-                    self.idx += 1
-                self.idx += 1  # Skip "["
-                decoded_sub = self.decodeString_recursive(s)
-                print(f"{s}: {decoded} + {multiplier} * {decoded_sub}")
-                decoded += multiplier * decoded_sub
-                self.idx += 1  # Skip "]"
-            else:
-                decoded += s[self.idx]
-                self.idx += 1
-        print(f"Return {decoded}, i={self.idx}")
-        return decoded

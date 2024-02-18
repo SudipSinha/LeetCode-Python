@@ -14,7 +14,7 @@ Notice that you may not slant the container.
 
 class Solution:
     def maxArea_naive(self, height: list[int]) -> int:
-        """Time complexity: O(n^2), Space complexity: O(1)."""
+        """Time complexity: O(n^2), space complexity: O(1)."""
         area__max = 0
         for left in range(len(height)):
             for right in range(len(height) - 1, left, -1):
@@ -25,9 +25,8 @@ class Solution:
 
     def maxArea_2ptr(self, height: list[int]) -> int:
         """Two pointer approach. We always move the limiting side.
-        Time complexity: O(n^2), Space complexity: O(1).
+        Time complexity: O(n^2), space complexity: O(1).
         """
-
         left = 0
         right = len(height) - 1
         area__cur = min([height[left], height[right]]) * (right - left)

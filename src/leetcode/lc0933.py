@@ -1,6 +1,6 @@
 """Number of Recent Calls
 
-Link: https://leetcode.com/problems/number-of-recent-calls/description/
+Link: https://leetcode.com/problems/number-of-recent-calls/
 
 You have a `RecentCounter` class which counts the number of recent requests within a certain time frame.
 

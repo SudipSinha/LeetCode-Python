@@ -1,6 +1,6 @@
 """Letter Combinations of a Phone Number
 
-Link: https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+Link: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
 Given a string containing digits from `2`-`9` inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
 
@@ -27,6 +27,3 @@ class Solution:
         products = product(*letters_list)
         possibilities = set(map(lambda prod: "".join(prod), products))
         return possibilities if possibilities != {""} else set()
-
-
-print(Solution().letterCombinations(digits=""))

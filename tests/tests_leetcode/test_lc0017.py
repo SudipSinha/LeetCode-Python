@@ -9,6 +9,6 @@ examples = [
 
 
 @pytest.mark.parametrize("digits, output_true", examples)
-def test_maxArea_naive(digits: str, output_true: set[str]):
+def test_letterCombinations(digits: str, output_true: set[str]):
     output_calc = lc0017.Solution().letterCombinations(digits=digits)
     assert output_calc == output_true

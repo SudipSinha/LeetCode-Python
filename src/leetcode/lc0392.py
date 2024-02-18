@@ -1,5 +1,7 @@
 """Is Subsequence
 
+Link: https://leetcode.com/problems/is-subsequence/
+
 Given two strings `s` and `t`, return `true` if `s` is a subsequence of `t`, or `false` otherwise.
 
 A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., `"ace"` is a subsequence of `"abcde"` while `"aec"` is not).
@@ -8,7 +10,7 @@ A subsequence of a string is a new string that is formed from the original strin
 
 class Solution:
     def isSubsequence_simple(self, s: str, t: str) -> bool:
-        """Time complexity: O(mn), Space complexity: O(1)."""
+        """Time complexity: O(mn), space complexity: O(1)."""
         idx_t = 0
         for char in s:
             while idx_t < len(t) and char != t[idx_t]:
@@ -21,8 +23,9 @@ class Solution:
     def isSubsequence_2ptr(self, s: str, t: str) -> bool:
         """Two pointer approach. Copied from:
         https://leetcode.com/problems/is-subsequence/solutions/4074367/93-76-two-pointers-dp/
-        Time complexity: O(mn), Space complexity: O(1).
+        Time complexity: O(mn), space complexity: O(1).
         """
+
         idx_s, idx_t = 0, 0
         while idx_s < len(s) and idx_t < len(t):
             if s[idx_s] == t[idx_t]:
@@ -33,9 +36,10 @@ class Solution:
     def isSubsequence_dp(self, s: str, t: str) -> bool:
         """Dynamic programming solution. Copied from:
         https://leetcode.com/problems/is-subsequence/solutions/4074367/93-76-two-pointers-dp/
-        Time complexity: O(mn), Space complexity: O(1).
+        Time complexity: O(mn), space complexity: O(1).
         """
-        nxt = [{} for _ in range(len(t) + 1)]
+
+        nxt: list[dict[str, int]] = [{} for _ in range(len(t) + 1)]
         for i in range(len(t) - 1, -1, -1):
             nxt[i] = nxt[i + 1].copy()
             nxt[i][t[i]] = i + 1

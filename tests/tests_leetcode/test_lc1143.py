@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc1143
 
-
 examples = [
     ("abcde", "ace", {"length": 3, "subseq": "ace"}),
     ("abc", "abc", {"length": 3, "subseq": "abc"}),

@@ -1,5 +1,7 @@
 """Longest Palindromic Substring
 
+Link: https://leetcode.com/problems/longest-palindromic-substring/
+
 Given a string `s`, return the longest palindromic substring in `s`.
 """
 
@@ -10,7 +12,7 @@ def _is_palindrome(s: str) -> bool:
 
 class Solution:
     def longestPalindrome_naive(self, s: str) -> str:
-        """Time complexity: O(n^2), Space complexity: O(n)."""
+        """Time complexity: O(n^2), space complexity: O(n)."""
         for substr__len in range(len(s), 0, -1):
             for idx_start in range(0, len(s) - substr__len + 1):
                 if _is_palindrome(s[idx_start : idx_start + substr__len]):

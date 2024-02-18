@@ -1,6 +1,6 @@
 """Valid Sudoku
 
-Link: https://leetcode.com/problems/valid-sudoku/description/
+Link: https://leetcode.com/problems/valid-sudoku/
 
 Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
 
@@ -31,7 +31,6 @@ class Solution:
         valid_blocks = numpy.full((3, 3), False)
         for i in range(3):
             for j in range(3):
-                # print(board_np[3* i: 3*i+3, j: j+3])
                 valid_blocks[i, j] = Solution._has_unique_elements(
                     board_np[3 * i : 3 * i + 3, 3 * j : 3 * j + 3]
                 )
@@ -45,17 +44,3 @@ class Solution:
                 if x != ".":
                     res += [(i, x), (x, j), (i // 3, j // 3, x)]
         return len(res) == len(set(res))
-
-
-board = [
-    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
-    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
-    [".", "9", "8", ".", ".", ".", ".", "6", "."],
-    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
-    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
-    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-    [".", "6", ".", ".", ".", ".", "2", "8", "."],
-    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
-    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
-]
-print(Solution().isValidSudoku_clever(board=board))

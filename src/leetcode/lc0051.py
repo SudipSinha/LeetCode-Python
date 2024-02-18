@@ -1,6 +1,6 @@
 """N-Queens
 
-Link: https://leetcode.com/problems/n-queens/description/
+Link: https://leetcode.com/problems/n-queens/
 
 The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
 
@@ -52,17 +52,21 @@ class Solution:
         search_rows: list[int],
         search_cols: list[int],
     ) -> None:
-        """Auxillary method for solving using backtracking."""
-        if not search_rows or not search_cols:
-            if queens_placed == n:
+        """Auxillary method for solving using backtracking.
+        Time complexity: O(n!), space complexity: O(n)."""
+
+        if not search_rows or not search_cols:  # Base case.
+            if queens_placed == n:  # Success.
                 self.solutions.append(Solution._format_solution(board))
             return
 
         row = search_rows[0]
         for col in search_cols:
             if Solution._valid(n=n, board=board, row=row, col=col):
+                #   Add queen.
                 board[row, col] = CHAR_QUEEN
                 queens_placed += 1
+                #   Solve.
                 self._solve(
                     n=n,
                     board=board,
@@ -70,6 +74,7 @@ class Solution:
                     search_rows=[r for r in search_rows if r != row],
                     search_cols=[c for c in search_cols if c != col],
                 )
+                #   Remove queen.
                 board[row, col] = CHAR_BLANK
                 queens_placed -= 1
 

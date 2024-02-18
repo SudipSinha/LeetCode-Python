@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc0394
 
-
 examples = [
     ("3[a]2[bc]", "aaabcbc"),
     ("3[a2[c]]", "accaccacc"),

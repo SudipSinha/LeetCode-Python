@@ -1,6 +1,6 @@
 """Dota2 Senate
 
-Link: https://leetcode.com/problems/dota2-senate/description/
+Link: https://leetcode.com/problems/dota2-senate/
 
 In the world of Dota2, there are two parties: the Radiant and the Dire.
 
@@ -16,7 +16,6 @@ Suppose every senator is smart enough and will play the best strategy for his ow
 """
 
 from collections import defaultdict, deque
-from pprint import pprint
 
 
 class Solution:
@@ -38,8 +37,6 @@ class Solution:
             list_ban_round = []
             idx = 0
             while idx < len(order):
-                pprint(order)
-                pprint(order_party)
                 if idx in list_ban_round:  # Skip banned voter in this round.
                     idx += 1
                     continue

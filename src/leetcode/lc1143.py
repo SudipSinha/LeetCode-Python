@@ -1,14 +1,18 @@
 """Longest Common Subsequence
-Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+
+Link: https://leetcode.com/problems/longest-common-subsequence/
+
+Given two strings `text1` and `text2`, return the length of their longest common subsequence. If there is no common subsequence, return `0`.
 
 A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
 
-For example, "ace" is a subsequence of "abcde".
+For example, `"ace"` is a subsequence of `"abcde"`.
 A common subsequence of two strings is a subsequence that is common to both strings.
 """
 
-import numpy
 from typing import TypedDict
+
+import numpy
 
 
 class LCS(TypedDict):
@@ -19,7 +23,7 @@ class LCS(TypedDict):
 class Solution:
     def longestCommonSubsequence_first(self, text1: str, text2: str) -> LCS:
         """Dynamic programming solution.
-        Time complexity: O(mn), Space complexity: O(mn).
+        Time complexity: O(mn), space complexity: O(mn).
         """
         lengths = numpy.full(shape=(len(text1) + 1, len(text2) + 1), fill_value=-1)
         lengths[0, :].fill(0)
@@ -72,7 +76,7 @@ class Solution:
 
     # def longestCommonSubsequence_all(self, text1: str, text2: str) -> LCS:
     #     """Dynamic programming solution.
-    #     Time complexity: O(mn), Space complexity: O(mn).
+    #     Time complexity: O(mn), space complexity: O(mn).
     #     """
     #     lengths = numpy.full(shape=(len(text1) + 1, len(text2) + 1), fill_value=-1)
     #     lengths[0, :].fill(0)

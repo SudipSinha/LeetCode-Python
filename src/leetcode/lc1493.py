@@ -1,15 +1,17 @@
 """Longest Subarray of 1's After Deleting One Element
 
+Link: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
+
 Given a binary array `nums`, you should delete `k` elements from it.
 
-Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.
+Return the size of the longest non-empty subarray containing only `1`'s in the resulting array. Return `0` if there is no such subarray.
 """
 
 
 class Solution:
     def longestSubarray_sw(self, nums: list[int], k: int = 1) -> int:
         """Sliding window approach.
-        Time complexity: O(n), Space complexity: O(1).
+        Time complexity: O(n), space complexity: O(1).
         """
 
         if not nums:
@@ -34,7 +36,7 @@ class Solution:
         return ones_max if ones_max != len(nums) else ones_max - 1
 
     def longestSubarray_alt(self, nums: list[int], k: int = 1) -> int:
-        """Time complexity: O(n), Space complexity: O(n)."""
+        """Time complexity: O(n), space complexity: O(n)."""
 
         if not nums:
             return 0

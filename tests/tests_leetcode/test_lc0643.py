@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc0643
 
-
 examples = [
     ([1, 12, -5, -6, 50, 3], 4, 12.75),
     ([5], 1, 5.0),

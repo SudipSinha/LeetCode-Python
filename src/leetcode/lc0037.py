@@ -1,6 +1,6 @@
 """Sudoku Solver
 
-Link: https://leetcode.com/problems/sudoku-solver/description/
+Link: https://leetcode.com/problems/sudoku-solver/
 
 Write a program to solve a Sudoku puzzle by filling the empty cells.
 

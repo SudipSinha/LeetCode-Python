@@ -1,12 +1,14 @@
 """Longest Substring Without Repeating Characters
 
+Link: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 Given a string `s`, find the length of the longest substring without repeating characters.
 """
 
 
 class Solution:
     def lengthOfLongestSubstring_naive(self, s: str) -> int:
-        """Time complexity: O(n^2), Space complexity: O(1)."""
+        """Time complexity: O(n^2), space complexity: O(1)."""
         length__max = 0
         for i in range(len(s)):
             current = 1
@@ -18,7 +20,7 @@ class Solution:
         return length__max
 
     def lengthOfLongestSubstring_hashmap(self, s: str) -> int:
-        """Time complexity: O(n^2), Space complexity: O(1)."""
+        """Time complexity: O(n^2), space complexity: O(1)."""
         length__max = 0
         for idx_start, letter_start in enumerate(s):
             visited = {letter_start}
@@ -32,7 +34,7 @@ class Solution:
         return length__max
 
     def lengthOfLongestSubstring_slidingwindow(self, s: str) -> int:
-        """Time complexity: O(n), Space complexity: O(1)."""
+        """Time complexity: O(n), space complexity: O(1)."""
         head = 0
         length__max = 0
         seen: dict[str, int] = {}

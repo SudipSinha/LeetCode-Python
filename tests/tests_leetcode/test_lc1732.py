@@ -8,6 +8,6 @@ examples = [
 
 
 @pytest.mark.parametrize("gain, output_true", examples)
-def test_maxArea_naive(gain: list[int], output_true: int):
+def test_largestAltitude(gain: list[int], output_true: int):
     output_calc = lc1732.Solution().largestAltitude(gain=gain)
     assert output_calc == output_true

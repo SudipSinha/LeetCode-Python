@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc0003
 
-
 examples = [
     ("abcabcbb", 3),
     ("bbbbb", 1),

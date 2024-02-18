@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc0509
 
-
 examples = [
     (0, 0),
     (1, 1),

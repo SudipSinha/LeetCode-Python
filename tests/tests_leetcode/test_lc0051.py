@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc0051
 
-
 examples = [
     (4, [[".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."]]),
 ]

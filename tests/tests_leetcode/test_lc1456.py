@@ -1,7 +1,6 @@
 import pytest
 from leetcode import lc1456
 
-
 examples = [
     ("abciiidef", 3, 3),
     ("aeiou", 2, 2),

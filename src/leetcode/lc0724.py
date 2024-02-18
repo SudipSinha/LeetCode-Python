@@ -1,6 +1,6 @@
 """Find Pivot Index
 
-Link: https://leetcode.com/problems/find-pivot-index/description/
+Link: https://leetcode.com/problems/find-pivot-index/
 
 Given an array of integers `nums`, calculate the pivot index of this array.
 
