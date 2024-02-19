@@ -34,3 +34,9 @@ def test_fib_dp_list(n: int, output_true: int):
 def test_fib_dp_dict(n: int, output_true: int):
     output_calc = lc0509.Solution().fib_dp_dict(n)
     assert output_calc == output_true
+
+
+@pytest.mark.parametrize("n, output_true", examples)
+def test_fib_dp_cache(n: int, output_true: int):
+    output_calc = lc0509.Solution().fib_dp_cache(n)
+    assert output_calc == output_true

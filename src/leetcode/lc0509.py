@@ -8,6 +8,7 @@ The Fibonacci numbers, commonly denoted `F(n)` form a sequence, called the Fibon
 Given `n`, calculate `F(n)`.
 """
 
+from functools import cache
 from math import sqrt
 
 
@@ -65,6 +66,20 @@ class Solution:
             nonlocal memo
             if m in memo:
                 return memo[m]
+            return fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
+
+        return fib_dp_aux(n)
+
+    @cache
+    def fib_dp_cache(self, n: int) -> int:
+        """Dynamic programming solution.
+        The `@cache` decorator automatically provides the memoization.
+        Time complexity: O(n), space complexity: O(1).
+        """
+
+        def fib_dp_aux(m: int = n):
+            if m in {0, 1}:
+                return m
             return fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
 
         return fib_dp_aux(n)
