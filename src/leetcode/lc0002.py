@@ -34,14 +34,6 @@ class ListNode:
         return True
 
 
-def generate_linkedlist(digits: list[int]) -> ListNode:
-    ll_dummyhead = ptr_ll = ListNode()  # Trash ListNode
-    for d in digits:
-        ptr_ll.next = ListNode(val=d)
-        ptr_ll = ptr_ll.next
-    return ll_dummyhead.next
-
-
 class Solution:
     def addTwoNumbers(
         self, l1: ListNode | None, l2: ListNode | None
