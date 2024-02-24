@@ -18,6 +18,3 @@ class Solution:
             anagrams["".join(sorted(word))].append(word)
 
         return frozenset(frozenset(words) for words in anagrams.values())
-
-
-print(Solution().groupAnagrams(strs=["eat", "tea", "tan", "ate", "nat", "bat"]))
