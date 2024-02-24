@@ -9,7 +9,7 @@ examples_list = [
 ]
 
 examples_linkedlist = [
-    tuple(lc0002._generate_linkedlist(digits=digits) for digits in example)  # type: ignore
+    tuple(lc0002.generate_linkedlist(digits=digits) for digits in example)  # type: ignore
     for example in examples_list
 ]
 

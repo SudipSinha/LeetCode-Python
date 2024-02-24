@@ -6,13 +6,18 @@ You are given two non-empty linked lists representing two non-negative integers.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 """
+# mypy: ignore-errors
 
 
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val: int = val
-        self.next: ListNode = next
+        self.next: ListNode | None = next
+
+    def __str__(self) -> str:
+        """String representation."""
+        return str(self.val)
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ListNode):
@@ -29,7 +34,7 @@ class ListNode:
         return True
 
 
-def _generate_linkedlist(digits: list[int]) -> ListNode:
+def generate_linkedlist(digits: list[int]) -> ListNode:
     ll_dummyhead = ptr_ll = ListNode()  # Trash ListNode
     for d in digits:
         ptr_ll.next = ListNode(val=d)
