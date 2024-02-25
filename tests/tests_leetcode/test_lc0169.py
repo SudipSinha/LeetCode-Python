@@ -8,6 +8,6 @@ examples = [
 
 
 @pytest.mark.parametrize("nums, output_true", examples)
-def test_reverseList(nums: list[int], output_true: int):
+def test_majorityElement(nums: list[int], output_true: int):
     output_calc = lc0169.Solution().majorityElement(nums=nums)
     assert output_calc == output_true
