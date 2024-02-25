@@ -19,6 +19,10 @@ class ListNode:
         """String representation."""
         return str(self.val)
 
+    def __repr__(self) -> str:
+        """String representation."""
+        return repr(self.val)
+
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ListNode):
             return False
