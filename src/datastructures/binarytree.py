@@ -1,6 +1,4 @@
 """Definition for a binary tree node."""
-#   TODO
-#   Deepcopy
 
 from __future__ import annotations
 
@@ -141,3 +139,37 @@ class BinaryTreeNode:
                 if node.left:
                     queue.append(node.left)
         return rsv
+
+    def lowestCommonAncestor(self, p: int, q: int) -> BinaryTreeNode | None:
+        """Solution copied from:
+        https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/3231708/236-solution-with-step-by-step-explanation/
+        """
+        if not self or self.val == p or self.val == q:
+            return self
+
+        l = self.left.lowestCommonAncestor(p, q) if self.left else None
+        r = self.right.lowestCommonAncestor(p, q) if self.right else None
+
+        if l and r:
+            return self
+        return l or r
+
+    def diameter(self) -> int:
+        """Diameter = maxdepth(left) + maxdepth(right).
+        Maximum depth is given by DFS.
+        Time complexity: O(n), space complexity: O(1), where `n` is the number of nodes.
+        """
+        diameter__max = 0
+
+        def _maxdepth_dfs(root: BinaryTreeNode | None = self) -> int:
+            nonlocal diameter__max
+            if not root:
+                return 0
+            maxdepth_left = _maxdepth_dfs(root=root.left)
+            maxdepth_right = _maxdepth_dfs(root=root.right)
+            diameter_cur = maxdepth_left + maxdepth_right
+            diameter__max = max(diameter_cur, diameter__max)
+            return 1 + max(maxdepth_left, maxdepth_right)
+
+        _maxdepth_dfs()
+        return diameter__max
