@@ -16,27 +16,3 @@ def lowestCommonAncestor(root: BinaryTreeNode | None, p: int, q: int) -> int | N
         if lca:
             return lca.val
     return None
-
-
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-
-# def lowestCommonAncestor(
-#     root: TreeNode | None, p: TreeNode, q: TreeNode
-# ) -> TreeNode | None:
-#     """Solution copied from:
-#     https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/3231708/236-solution-with-step-by-step-explanation/
-#     """
-#     if not root or root == p or root == q:
-#         return root
-
-#     l = lowestCommonAncestor(root.left, p, q)
-#     r = lowestCommonAncestor(root.right, p, q)
-
-#     if l and r:
-#         return root
-#     return l or r

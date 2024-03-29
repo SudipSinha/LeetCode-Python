@@ -147,29 +147,94 @@ class BinaryTreeNode:
         if not self or self.val == p or self.val == q:
             return self
 
-        l = self.left.lowestCommonAncestor(p, q) if self.left else None
-        r = self.right.lowestCommonAncestor(p, q) if self.right else None
+        ancestor_left = self.left.lowestCommonAncestor(p, q) if self.left else None
+        ancestor_right = self.right.lowestCommonAncestor(p, q) if self.right else None
 
-        if l and r:
+        if ancestor_left and ancestor_right:
             return self
-        return l or r
+        return ancestor_left or ancestor_right
+
+    def maxDepth(self) -> int:
+        """Maximum depth of the binary tree.
+        Time complexity: O(n), space complexity: Ω(log(n)) ∩ O(n), where `n` is the number of nodes.
+        Space complexity is due to recursion from the depth of tree.
+        """
+        if not self:
+            return 0
+        depth_left = self.left.maxDepth() if self.left else 0
+        depth_right = self.right.maxDepth() if self.right else 0
+        return 1 + max(depth_left, depth_right)
+
+    def diameter_naive(self) -> int:
+        """Recursive relation:
+            diameter = max{depth_max(left) + depth_max(right), diameter(left), diameter(right)}.
+        Time complexity: O(n^2), space complexity: Ω(log(n)) ∩ O(n), where `n` is the number of nodes.
+        Space complexity is due to recursion from the depth of tree.
+        This is suboptimal as we visit the nodes multiple times (for the maxDepth).
+        """
+        if not self:
+            return 0
+        depth_max__left = self.left.maxDepth() if self.left else 0
+        depth_max__right = self.right.maxDepth() if self.right else 0
+        candidates = [depth_max__left + depth_max__right]
+        if self.left:
+            candidates.append(self.left.diameter())
+        if self.right:
+            candidates.append(self.right.diameter())
+        return max(candidates)
 
     def diameter(self) -> int:
-        """Diameter = maxdepth(left) + maxdepth(right).
-        Maximum depth is given by DFS.
+        """Recursive relation:
+            diameter = max{depth_max(left) + depth_max(right), diameter(left), diameter(right)}.
+        Time complexity: O(n), space complexity: Ω(log(n)) ∩ O(n), where `n` is the number of nodes.
+        Space complexity is due to recursion from the depth of tree.
+        We cache the results of maxDepth to reduce time complexity.
+        """
+        if not self:
+            return 0
+        cache_depth_max: dict[int, int] = {}
+
+        def _diameter_inner(root: BinaryTreeNode) -> int:
+            nonlocal cache_depth_max
+            depth_max__left = depth_max__right = 0
+            diameter__left = diameter__right = 0
+            if root.left:
+                if id(root.left) not in cache_depth_max:
+                    cache_depth_max[id(root.left)] = root.left.maxDepth()
+                else:
+                    print("left max depth: read from cache")
+                depth_max__left = cache_depth_max[id(root.left)]
+                diameter__left = _diameter_inner(root=root.left)
+            if root.right:
+                if id(root.right) not in cache_depth_max:
+                    cache_depth_max[id(root.right)] = root.right.maxDepth()
+                else:
+                    print("right max depth: read from cache")
+                depth_max__right = cache_depth_max[id(root.right)]
+                diameter__right = _diameter_inner(root=root.right)
+            return max(
+                [depth_max__left + depth_max__right, diameter__left, diameter__right]
+            )
+
+        return _diameter_inner(root=self)
+
+    def diameter_1pass(self) -> int:
+        """Recursive relation:
+            diameter = max{depth_max(left) + depth_max(right), diameter(left), diameter(right)}.
+        We use DFS for both maximum depth and diameter simultaneously.
         Time complexity: O(n), space complexity: O(1), where `n` is the number of nodes.
         """
         diameter__max = 0
 
-        def _maxdepth_dfs(root: BinaryTreeNode | None = self) -> int:
+        def _maxDepth_dfs(root: BinaryTreeNode | None = self) -> int:
             nonlocal diameter__max
             if not root:
                 return 0
-            maxdepth_left = _maxdepth_dfs(root=root.left)
-            maxdepth_right = _maxdepth_dfs(root=root.right)
-            diameter_cur = maxdepth_left + maxdepth_right
+            depth_max__left = _maxDepth_dfs(root=root.left)
+            depth_max__right = _maxDepth_dfs(root=root.right)
+            diameter_cur = depth_max__left + depth_max__right
             diameter__max = max(diameter_cur, diameter__max)
-            return 1 + max(maxdepth_left, maxdepth_right)
+            return 1 + max(depth_max__left, depth_max__right)
 
-        _maxdepth_dfs()
+        _maxDepth_dfs()
         return diameter__max

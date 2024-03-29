@@ -4,6 +4,7 @@ Link: https://leetcode.com/problems/longest-palindromic-substring/
 
 Given a string `s`, return the longest palindromic substring in `s`.
 """
+
 from math import ceil, floor
 from typing import TypedDict
 
