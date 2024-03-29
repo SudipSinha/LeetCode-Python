@@ -33,3 +33,6 @@ lint = [
 doc = [
     "mkdocs>=1.5.3",
 ]
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
