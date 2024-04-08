@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "dependsOn": [
+                "lint",
+                "format",
+                "static type check",
+                "test coverage",
+                "pdm build",
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+        },
+        {
+            "label": "lint",
+            "type": "shell",
+            "command": "pdm run ruff check --select I --fix src tests",
+        },
+        {
+            "label": "format",
+            "type": "shell",
+            "command": "pdm run ruff format src tests",
+        },
+        {
+            "label": "static type check",
+            "type": "shell",
+            "command": "pdm run mypy src tests",
+        },
+        {
+            "label": "test coverage",
+            "type": "shell",
+            "command": "pdm run coverage run -m pytest && pdm run coverage report --show-missing",
+        },
+        {
+            "label": "pdm build",
+            "type": "shell",
+            "command": "pdm build",
+        },
+    ]
+}
