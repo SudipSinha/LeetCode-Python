@@ -201,15 +201,11 @@ class BinaryTreeNode:
             if root.left:
                 if id(root.left) not in cache_depth_max:
                     cache_depth_max[id(root.left)] = root.left.maxDepth()
-                else:
-                    print("left max depth: read from cache")
                 depth_max__left = cache_depth_max[id(root.left)]
                 diameter__left = _diameter_inner(root=root.left)
             if root.right:
                 if id(root.right) not in cache_depth_max:
                     cache_depth_max[id(root.right)] = root.right.maxDepth()
-                else:
-                    print("right max depth: read from cache")
                 depth_max__right = cache_depth_max[id(root.right)]
                 diameter__right = _diameter_inner(root=root.right)
             return max(

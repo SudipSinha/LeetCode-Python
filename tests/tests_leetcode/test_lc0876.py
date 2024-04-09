@@ -5,8 +5,8 @@ from leetcode.lc0002 import ListNode
 from tests.tests_leetcode.test_lc0002 import generate_linkedlist
 
 examples_list = [
-    ([1,2,3,4,5], [3,4,5]),
-    ([1,2,3,4,5,6], [4,5,6]),
+    ([1, 2, 3, 4, 5], [3, 4, 5]),
+    ([1, 2, 3, 4, 5, 6], [4, 5, 6]),
 ]
 
 

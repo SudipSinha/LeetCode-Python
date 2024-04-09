@@ -50,7 +50,6 @@ class Solution:
                 lengths[i] = 1
                 subseqs[i] = [nums[i]]
         index__max = argmax(lengths)
-        print(f"{lengths=}, {subseqs=}")
         return {
             "length": lengths[index__max],
             "subseq": subseqs[index__max],
