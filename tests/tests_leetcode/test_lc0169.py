@@ -9,11 +9,17 @@ examples = [
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_majorityElement_hashmap(nums: list[int], output_true: int):
-    output_calc = lc0169.Solution().majorityElement_hashmap(nums=nums)
+    output_calc = lc0169.majorityElement_hashmap(nums=nums)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("nums, output_true", examples)
+def test_majorityElement_counter(nums: list[int], output_true: int):
+    output_calc = lc0169.majorityElement_counter(nums=nums)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_majorityElement_Boyer_Moore(nums: list[int], output_true: int):
-    output_calc = lc0169.Solution().majorityElement_Boyer_Moore(nums=nums)
+    output_calc = lc0169.majorityElement_Boyer_Moore(nums=nums)
     assert output_calc == output_true
