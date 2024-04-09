@@ -238,3 +238,12 @@ class BinaryTreeNode:
 
         _maxDepth_dfs()
         return diameter__max
+
+    def searchBST(self, val: int) -> BinaryTreeNode | None:
+        if self.val == val:
+            return self
+        elif val < self.val and self.left:
+            return self.left.searchBST(val)
+        elif val > self.val and self.right:
+            return self.right.searchBST(val)
+        return None
