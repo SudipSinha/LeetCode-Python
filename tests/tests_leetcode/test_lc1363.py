@@ -11,6 +11,12 @@ examples = [
 
 
 @pytest.mark.parametrize("digits, output_true", examples)
-def test_maxProfit_naive(digits: list[int], output_true: str):
-    output_calc = lc1363.largestMultipleOfThree(digits=digits)
+def test_largestMultipleOfThree_math(digits: list[int], output_true: str):
+    output_calc = lc1363.largestMultipleOfThree_math(digits=digits)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("digits, output_true", examples)
+def test_largestMultipleOfThree_dp(digits: list[int], output_true: str):
+    output_calc = lc1363.largestMultipleOfThree_dp(digits=digits)
     assert output_calc == output_true

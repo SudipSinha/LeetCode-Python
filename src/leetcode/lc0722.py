@@ -31,23 +31,23 @@ def removeComments(source: list[str]) -> list[str]:
     """Time complexity: O(n), space complexity: O(1)."""
     source_str = "\n".join(source)
     comments_removed = ""
-    singleline_start = -1  # -1 if not started.
+    singleline_start = False
     multiline_ongoing = False
     i = 0
     while i < len(source_str):
         if (
             not multiline_ongoing
-            and singleline_start == -1
+            and not singleline_start
             and i + 1 < len(source_str)
             and source_str[i : i + 2] == "//"
         ):
-            singleline_start = i
+            singleline_start = True
             i += 1
         elif not multiline_ongoing and singleline_start != -1 and source_str[i] == "\n":
-            singleline_start = -1
+            singleline_start = False
             comments_removed += "\n"
         elif (
-            singleline_start == -1
+            not singleline_start
             and not multiline_ongoing
             and i + 1 < len(source_str)
             and source_str[i : i + 2] == "/*"
@@ -55,14 +55,14 @@ def removeComments(source: list[str]) -> list[str]:
             multiline_ongoing = True
             i += 1
         elif (
-            singleline_start == -1
+            not singleline_start
             and multiline_ongoing
             and i + 1 < len(source_str)
             and source_str[i : i + 2] == "*/"
         ):
             multiline_ongoing = False
             i += 1
-        elif singleline_start == -1 and not multiline_ongoing:
+        elif not singleline_start and not multiline_ongoing:
             comments_removed += source_str[i]
         i += 1
     return [line for line in comments_removed.split("\n") if line]

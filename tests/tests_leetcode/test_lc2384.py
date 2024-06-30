@@ -10,6 +10,6 @@ examples = [
 
 
 @pytest.mark.parametrize("num, output_true", examples)
-def test_maxProfit_naive(num: str, output_true: str):
+def test_largestPalindromic(num: str, output_true: str):
     output_calc = lc2384.largestPalindromic(num=num)
     assert output_calc == output_true

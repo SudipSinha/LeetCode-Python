@@ -19,7 +19,7 @@ def largestPalindromic(num: str) -> str:
     start: list[str] = []
     reserve: str = ""
     digits: list[str] = list(num)
-    digits_counter: Counter = Counter(digits)
+    digits_counter: Counter[str] = Counter(digits)
     for d in sorted(digits_counter, reverse=True):
         if len(start) > 0 or (d != "0" and digits_counter[d] >= 2):
             start.append(d * (digits_counter[d] // 2))

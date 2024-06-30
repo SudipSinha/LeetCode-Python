@@ -23,6 +23,6 @@ examples = [
 
 
 @pytest.mark.parametrize("source, output_true", examples)
-def test_maxProfit_naive(source: list[str], output_true: list[str]):
+def test_removeComments(source: list[str], output_true: list[str]):
     output_calc = lc0722.removeComments(source=source)
     assert output_calc == output_true
