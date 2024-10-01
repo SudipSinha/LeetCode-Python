@@ -10,14 +10,14 @@ from typing import Literal
 @dataclass
 class ListNode:
     data: int
-    next: ListNode | None = None
+    successor: ListNode | None = None
 
     def __str__(self) -> str:
         output = ""
         current: ListNode | None = self
         while current is not None:
             output += f"{current.data} → "
-            current = current.next
+            current = current.successor
         return output + str(current)
 
     def __repr__(self) -> str:
@@ -25,7 +25,7 @@ class ListNode:
         current: ListNode | None = self
         while current is not None:
             output += f"ListNode({current.data}) → "
-            current = current.next
+            current = current.successor
         return output + str(current)
 
     def __eq__(self, other: object) -> bool:
@@ -36,8 +36,8 @@ class ListNode:
                 return False
             elif self.data != other.data:  # type: ignore
                 return False
-            self = self.next  # type: ignore
-            other = other.next  # type: ignore
+            self = self.successor  # type: ignore
+            other = other.successor  # type: ignore
         return True
 
     def __len__(self) -> int:
@@ -47,7 +47,7 @@ class ListNode:
             current is not None
         ):  # Cannot use `current` as conditional as it depends on `__len__()`.
             length += 1
-            current = current.next  # type: ignore
+            current = current.successor  # type: ignore
         return length
 
     @classmethod
@@ -56,9 +56,9 @@ class ListNode:
             return None
         dummy_head = ptr_ll = ListNode(data=0)  # Dummy node.
         for element in iterable:
-            ptr_ll.next = ListNode(data=element)
-            ptr_ll = ptr_ll.next
-        return dummy_head.next
+            ptr_ll.successor = ListNode(data=element)
+            ptr_ll = ptr_ll.successor
+        return dummy_head.successor
 
     @classmethod
     def merge_alternate(
@@ -70,25 +70,25 @@ class ListNode:
         dummyhead = merged = ListNode(data=0)  # Dummy node.
         while pointer1 or pointer2:
             if pointer1:
-                merged.next = pointer1
-                merged = merged.next
-                pointer1 = pointer1.next
+                merged.successor = pointer1
+                merged = merged.successor
+                pointer1 = pointer1.successor
             if pointer2:
-                merged.next = pointer2
-                merged = merged.next
-                pointer2 = pointer2.next
-        return dummyhead.next
+                merged.successor = pointer2
+                merged = merged.successor
+                pointer2 = pointer2.successor
+        return dummyhead.successor
 
     def reverse(self) -> ListNode | None:
         if not self:
             return None
         left = self
-        right = self.next
+        right = self.successor
         left_of_left = None
         while right:
-            right_of_right = right.next
-            right.next = left
-            left.next = left_of_left
+            right_of_right = right.successor
+            right.successor = left
+            left.successor = left_of_left
             left_of_left = left
             left = right
             right = right_of_right
@@ -99,20 +99,20 @@ class ListNode:
             return None
         slow = self
         fast = self
-        while fast.next and fast.next.next:
-            slow = slow.next  # type: ignore
-            fast = fast.next.next
-        if not fast.next:  # Unique middle node.
+        while fast.successor and fast.successor.successor:
+            slow = slow.successor  # type: ignore
+            fast = fast.successor.successor
+        if not fast.successor:  # Unique middle node.
             return slow
         elif mode == "left":
             return slow
         else:
-            return slow.next  # type: ignore
+            return slow.successor  # type: ignore
 
     def appendleft(self, element: int) -> None:
         """Append at the beginning in-place."""
         updated = ListNode(data=element)
-        updated.next = self
+        updated.successor = self
         self.__dict__ = deepcopy(
             updated.__dict__
         )  # https://stackoverflow.com/a/29591356/1369696
@@ -120,22 +120,22 @@ class ListNode:
     def append(self, element: int) -> None:
         """Append at the end in-place."""
         current = self
-        while current.next is not None:
-            current = current.next
-        current.next = ListNode(data=element)
+        while current.successor is not None:
+            current = current.successor
+        current.successor = ListNode(data=element)
 
     def popleft(self) -> int:
         first = self.data
         self.__dict__ = deepcopy(
-            self.next.__dict__
+            self.successor.__dict__
         )  # https://stackoverflow.com/a/29591356/1369696
         return first
 
     def pop(self) -> int:
         prev = None
         curr = self
-        while curr.next is not None:
+        while curr.successor is not None:
             prev = curr
-            curr = curr.next
-        prev.next = None  # type: ignore
+            curr = curr.successor
+        prev.successor = None  # type: ignore
         return curr.data

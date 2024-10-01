@@ -20,9 +20,9 @@ def reorderList(head: ListNode | None) -> None:
         return None
     mid = head.middle(mode="left")
     #   Special check for a single node linked list.
-    if mid.next:  # type: ignore
-        part2 = mid.next  # type: ignore
-    mid.next = None  # type: ignore
+    if mid.successor:  # type: ignore
+        part2 = mid.successor  # type: ignore
+    mid.successor = None  # type: ignore
     part1 = head
 
     part2_reversed = part2.reverse()
