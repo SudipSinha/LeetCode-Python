@@ -14,5 +14,5 @@ def lowestCommonAncestor(root: BinaryTreeNode | None, p: int, q: int) -> int | N
     if root:
         lca = root.lowestCommonAncestor(p=p, q=q)
         if lca:
-            return lca.val
+            return lca.data
     return None

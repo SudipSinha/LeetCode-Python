@@ -3,24 +3,25 @@
 from __future__ import annotations
 
 from collections import deque
+from dataclasses import dataclass
 
 
+@dataclass
 class BinaryTreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+    data: int
+    left: BinaryTreeNode | None = None
+    right: BinaryTreeNode | None = None
 
     def __repr__(self) -> str:
-        return f"val: {self.val}, left: {self.left}, right: {self.right}"
+        return f"val: {self.data}, left: {self.left}, right: {self.right}"
 
     def __str__(self):
-        return f"<{self.val}, {self.left}, {self.right}>"
+        return f"<{self.data}, {self.left}, {self.right}>"
 
     def __eq__(self, other: object) -> bool:
         return (
             isinstance(other, BinaryTreeNode)
-            and self.val == other.val
+            and self.data == other.data
             and self.left == other.left
             and self.right == other.right
         )
@@ -37,9 +38,9 @@ class BinaryTreeNode:
             return None
 
         def _inner(index: int = 0) -> BinaryTreeNode | None:
-            if index >= len(nums) or nums[index] is None:
+            if index >= len(nums) or not nums[index]:
                 return None
-            node = BinaryTreeNode(val=nums[index])
+            node = BinaryTreeNode(data=nums[index])  # type: ignore
             node.left = _inner(index=2 * index + 1)
             node.right = _inner(index=2 * index + 2)
             return node
@@ -89,21 +90,21 @@ class BinaryTreeNode:
             return []
         result_left = self.left.inorderTraversal_recur() if self.left else []
         result_right = self.right.inorderTraversal_recur() if self.right else []
-        return result_left + [self.val] + result_right
+        return result_left + [self.data] + result_right
 
     def preorderTraversal_recur(self) -> list[int]:
         if not self:
             return []
         result_left = self.left.preorderTraversal_recur() if self.left else []
         result_right = self.right.preorderTraversal_recur() if self.right else []
-        return [self.val] + result_left + result_right
+        return [self.data] + result_left + result_right
 
     def postorderTraversal_recur(self) -> list[int]:
         if not self:
             return []
         result_left = self.left.postorderTraversal_recur() if self.left else []
         result_right = self.right.postorderTraversal_recur() if self.right else []
-        return result_left + result_right + [self.val]
+        return result_left + result_right + [self.data]
 
     def invert(self):
         """Invert tree in place."""
@@ -131,7 +132,7 @@ class BinaryTreeNode:
         queue: deque[BinaryTreeNode] = deque()
         queue.append(self)
         while queue:
-            rsv.append(queue[0].val)
+            rsv.append(queue[0].data)
             for _ in range(len(queue)):
                 node = queue.popleft()
                 if node.right:
@@ -144,7 +145,7 @@ class BinaryTreeNode:
         """Solution copied from:
         https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/solutions/3231708/236-solution-with-step-by-step-explanation/
         """
-        if not self or self.val == p or self.val == q:
+        if not self or self.data == p or self.data == q:
             return self
 
         ancestor_left = self.left.lowestCommonAncestor(p, q) if self.left else None
@@ -236,10 +237,10 @@ class BinaryTreeNode:
         return diameter__max
 
     def searchBST(self, val: int) -> BinaryTreeNode | None:
-        if self.val == val:
+        if self.data == val:
             return self
-        elif val < self.val and self.left:
+        elif val < self.data and self.left:
             return self.left.searchBST(val)
-        elif val > self.val and self.right:
+        elif val > self.data and self.right:
             return self.right.searchBST(val)
         return None

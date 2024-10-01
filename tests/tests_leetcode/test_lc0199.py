@@ -1,4 +1,5 @@
 import pytest
+
 from datastructures.binarytree import BinaryTreeNode
 from leetcode import lc0199
 
