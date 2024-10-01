@@ -1,8 +1,7 @@
 import pytest
-from leetcode import lc0143
-from leetcode.lc0002 import ListNode
 
-from tests.tests_leetcode.test_lc0002 import generate_linkedlist
+from datastructures.linkedlist import ListNode
+from leetcode import lc0143
 
 examples_list = [
     ([1, 2, 3, 4], [1, 4, 2, 3]),
@@ -11,7 +10,7 @@ examples_list = [
 ]
 
 examples_linkedlist = [
-    tuple(generate_linkedlist(digits=digits) for digits in example)  # type: ignore
+    tuple(ListNode.from_iterable(iterable=digits) for digits in example)  # type: ignore
     for example in examples_list
 ]
 
@@ -21,5 +20,5 @@ def test_reorderList(
     head: ListNode | None,
     output_true: ListNode | None,
 ):
-    lc0143.Solution().reorderList(head=head)
+    lc0143.reorderList(head=head)
     assert head == output_true
