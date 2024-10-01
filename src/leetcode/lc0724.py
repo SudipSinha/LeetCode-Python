@@ -12,13 +12,12 @@ Return the leftmost pivot index. If no such index exists, return `-1`.
 """
 
 
-class Solution:
-    def pivotIndex(self, nums: list[int]) -> int:
-        sum_left = 0
-        sum_right = sum(nums)
-        for i, n in enumerate(nums):
-            sum_right -= n
-            if sum_left == sum_right:
-                return i
-            sum_left += n
-        return -1
+def pivotIndex(nums: list[int]) -> int:
+    sum_left = 0
+    sum_right = sum(nums)
+    for i, n in enumerate(nums):
+        sum_right -= n
+        if sum_left == sum_right:
+            return i
+        sum_left += n
+    return -1

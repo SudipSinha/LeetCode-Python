@@ -32,13 +32,13 @@ def tribonacci_iter(n: int) -> int:
     elif n in {1, 2}:
         return 1
 
-    a = 0
-    b = 1
-    c = 1
-    s = 0
+    minus1 = 0
+    minus2 = 1
+    minus3 = 1
+    curr = 0
 
     for _ in range(3, n + 1):
-        s = a + b + c
-        (a, b, c) = (b, c, s)
+        curr = minus1 + minus2 + minus3
+        (minus1, minus2, minus3) = (minus2, minus3, curr)
 
-    return s
+    return curr

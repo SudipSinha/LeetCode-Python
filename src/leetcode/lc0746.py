@@ -30,6 +30,7 @@ def minCostClimbingStairs_array(cost: list[int]) -> int:
     cost__min = [infinity] * (len(cost) + 2)
 
     def _cost(pos: int) -> int:
+        nonlocal cost__min
         if cost__min[pos] != infinity:
             return cost__min[pos]
         if pos >= len(cost):

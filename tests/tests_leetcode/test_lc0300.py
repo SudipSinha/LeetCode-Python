@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0300
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_lengthOfLIS_dp(nums: list[int], output_true: lc0300.LIS):
-    output_calc = lc0300.Solution().lengthOfLIS_dp(nums=nums)
+    output_calc = lc0300.lengthOfLIS_dp(nums=nums)
     assert output_calc == output_true

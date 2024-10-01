@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0036
 
 examples = [
@@ -35,11 +36,11 @@ examples = [
 
 @pytest.mark.parametrize("board, output_true", examples)
 def test_isValidSudoku_naive(board: list[list[str]], output_true: int):
-    output_calc = lc0036.Solution().isValidSudoku_naive(board=board)
+    output_calc = lc0036.isValidSudoku_naive(board=board)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("board, output_true", examples)
 def test_isValidSudoku_clever(board: list[list[str]], output_true: int):
-    output_calc = lc0036.Solution().isValidSudoku_clever(board=board)
+    output_calc = lc0036.isValidSudoku_clever(board=board)
     assert output_calc == output_true

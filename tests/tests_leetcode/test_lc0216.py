@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0216
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("k, n, output_true", examples)
 def test_combinationSum3(k: int, n: int, output_true: str):
-    output_calc = lc0216.Solution().combinationSum3(k=k, n=n)
+    output_calc = lc0216.combinationSum3(k=k, n=n)
     assert output_calc == output_true

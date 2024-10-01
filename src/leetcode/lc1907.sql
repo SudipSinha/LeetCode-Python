@@ -71,7 +71,7 @@ WITH
     category_counts AS (
         SELECT
             category,
-            count(*) AS accounts_count
+            COUNT(*) AS accounts_count
         FROM
             categories
         GROUP BY
@@ -132,18 +132,18 @@ WITH
 -- Unpivot
 SELECT
     'Low Salary' AS category,
-    sum(L) AS accounts_count
+    SUM(L) AS accounts_count
 FROM
     categoried
 UNION
 SELECT
     'Average Salary' AS category,
-    sum(A) AS accounts_count
+    SUM(A) AS accounts_count
 FROM
     categoried
 UNION
 SELECT
     'High Salary' AS category,
-    sum(H) AS accounts_count
+    SUM(H) AS accounts_count
 FROM
     categoried;

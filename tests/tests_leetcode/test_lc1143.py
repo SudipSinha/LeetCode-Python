@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc1143
 
 examples = [
@@ -13,7 +14,5 @@ examples = [
 def test_longestCommonSubsequence_first(
     text1: str, text2: str, output_true: lc1143.LCS
 ):
-    output_calc = lc1143.Solution().longestCommonSubsequence_first(
-        text1=text1, text2=text2
-    )
+    output_calc = lc1143.longestCommonSubsequence_first(text1=text1, text2=text2)
     assert output_calc == output_true

@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0122
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("prices, output_true", examples)
 def test_maxProfit(prices: list[int], output_true: int):
-    output_calc = lc0122.Solution().maxProfit(prices=prices)
+    output_calc = lc0122.maxProfit(prices=prices)
     assert output_calc == output_true

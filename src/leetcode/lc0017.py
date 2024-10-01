@@ -10,20 +10,19 @@ A mapping of digits to letters (just like on the telephone buttons) is given bel
 from itertools import product
 
 
-class Solution:
-    def letterCombinations(self, digits: str) -> set[str]:
-        map_digit_letters = {
-            "2": {"a", "b", "c"},
-            "3": {"d", "e", "f"},
-            "4": {"g", "h", "i"},
-            "5": {"j", "k", "l"},
-            "6": {"m", "n", "o"},
-            "7": {"p", "q", "r", "s"},
-            "8": {"t", "u", "v"},
-            "9": {"w", "x", "y", "z"},
-        }
-        digits_list = list(digits)
-        letters_list = (map_digit_letters[digit] for digit in digits_list)
-        products = product(*letters_list)
-        possibilities = set(map(lambda prod: "".join(prod), products))
-        return possibilities if possibilities != {""} else set()
+def letterCombinations(digits: str) -> set[str]:
+    map_digit_letters = {
+        "2": {"a", "b", "c"},
+        "3": {"d", "e", "f"},
+        "4": {"g", "h", "i"},
+        "5": {"j", "k", "l"},
+        "6": {"m", "n", "o"},
+        "7": {"p", "q", "r", "s"},
+        "8": {"t", "u", "v"},
+        "9": {"w", "x", "y", "z"},
+    }
+    digits_list = list(digits)
+    letters_list = (map_digit_letters[digit] for digit in digits_list)
+    products = product(*letters_list)
+    possibilities = set(map(lambda prod: "".join(prod), products))
+    return possibilities if possibilities != {""} else set()

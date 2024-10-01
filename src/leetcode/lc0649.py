@@ -18,38 +18,35 @@ Suppose every senator is smart enough and will play the best strategy for his ow
 from collections import defaultdict, deque
 
 
-class Solution:
-    def predictPartyVictory(self, senate: str) -> str:
-        order = list(senate)
-        name = {
-            "R": "Radiant",
-            "D": "Dire",
-        }
-        opposition = {
-            "R": "D",
-            "D": "R",
-        }
+def predictPartyVictory(senate: str) -> str:
+    order = list(senate)
+    name = {
+        "R": "Radiant",
+        "D": "Dire",
+    }
+    opposition = {
+        "R": "D",
+        "D": "R",
+    }
 
-        order_party: defaultdict[str, deque[int]] = defaultdict(deque[int])
+    order_party: defaultdict[str, deque[int]] = defaultdict(deque[int])
+    for idx, party in enumerate(order):
+        order_party[party].append(idx)
+    while order_party["R"] and order_party["D"]:
+        list_ban_round = []
+        idx = 0
+        while idx < len(order):
+            if idx in list_ban_round:  # Skip banned voter in this round.
+                idx += 1
+                continue
+            party_cur = order[idx]
+            if len(order_party[opposition[party_cur]]) > 0:
+                list_ban_round.append(order_party[opposition[party_cur]].popleft())
+                idx += 1
+            else:
+                return name[party_cur]
+        order = [order[idx] for idx in range(len(order)) if idx not in list_ban_round]
+        order_party = defaultdict(deque[int])
         for idx, party in enumerate(order):
             order_party[party].append(idx)
-        while order_party["R"] and order_party["D"]:
-            list_ban_round = []
-            idx = 0
-            while idx < len(order):
-                if idx in list_ban_round:  # Skip banned voter in this round.
-                    idx += 1
-                    continue
-                party_cur = order[idx]
-                if len(order_party[opposition[party_cur]]) > 0:
-                    list_ban_round.append(order_party[opposition[party_cur]].popleft())
-                    idx += 1
-                else:
-                    return name[party_cur]
-            order = [
-                order[idx] for idx in range(len(order)) if idx not in list_ban_round
-            ]
-            order_party = defaultdict(deque[int])
-            for idx, party in enumerate(order):
-                order_party[party].append(idx)
-        return name["D"] if len(order_party["R"]) == 0 else name["R"]
+    return name["D"] if len(order_party["R"]) == 0 else name["R"]

@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0066
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("digits, output_true", examples)
 def test_plusOne(digits: list[int], output_true: list[int]):
-    output_calc = lc0066.Solution().plusOne(digits=digits)
+    output_calc = lc0066.plusOne(digits=digits)
     assert output_calc == output_true

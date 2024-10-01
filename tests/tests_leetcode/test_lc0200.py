@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0200
 
 examples = [
@@ -25,12 +26,11 @@ examples = [
 
 @pytest.mark.parametrize("grid, output_true", examples)
 def test_numIslands_dfs(grid: list[list[str]], output_true: int):
-    output_calc = lc0200.Solution().numIslands(grid=grid, method="DFS")
+    output_calc = lc0200.numIslands(grid=grid, method="DFS")
     assert output_calc == output_true
 
 
-#   TODO: Somehow these tests fail when run via `pdm run`.
 @pytest.mark.parametrize("grid, output_true", examples)
 def test_numIslands_bfs(grid: list[list[str]], output_true: int):
-    output_calc = lc0200.Solution().numIslands(grid=grid, method="BFS")
+    output_calc = lc0200.numIslands(grid=grid, method="BFS")
     assert output_calc == output_true

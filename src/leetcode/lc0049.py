@@ -10,11 +10,10 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 from collections import defaultdict
 
 
-class Solution:
-    def groupAnagrams(self, strs: list[str]) -> frozenset[frozenset[str]]:
-        """Time complexity: O(len(strs) ⋅ maxlen(strs)), space complexity: O(n)."""
-        anagrams = defaultdict(list)
-        for word in strs:
-            anagrams["".join(sorted(word))].append(word)
+def groupAnagrams(strs: list[str]) -> frozenset[frozenset[str]]:
+    """Time complexity: O(len(strs) ⋅ maxlen(strs)), space complexity: O(n)."""
+    anagrams = defaultdict(list)
+    for word in strs:
+        anagrams["".join(sorted(word))].append(word)
 
-        return frozenset(frozenset(words) for words in anagrams.values())
+    return frozenset(frozenset(words) for words in anagrams.values())

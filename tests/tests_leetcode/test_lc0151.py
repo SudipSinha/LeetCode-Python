@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0151
 
 examples = [

@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0001
 
 examples = [
@@ -11,17 +12,17 @@ examples = [
 
 @pytest.mark.parametrize("nums, target, output_true", examples)
 def test_twoSum_naive(nums: list[int], target: int, output_true: set[int]):
-    output_calc = lc0001.Solution().twoSum_naive(nums, target)
+    output_calc = lc0001.twoSum_naive(nums, target)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("nums, target, output_true", examples)
 def test_twoSum_hashmap_2pass(nums: list[int], target: int, output_true: set[int]):
-    output_calc = lc0001.Solution().twoSum_hashmap_2pass(nums, target)
+    output_calc = lc0001.twoSum_hashmap_2pass(nums, target)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("nums, target, output_true", examples)
 def test_twoSum_hashmap_1pass(nums: list[int], target: int, output_true: set[int]):
-    output_calc = lc0001.Solution().twoSum_hashmap_1pass(nums, target)
+    output_calc = lc0001.twoSum_hashmap_1pass(nums, target)
     assert output_calc == output_true

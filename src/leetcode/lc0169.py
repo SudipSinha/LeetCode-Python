@@ -37,8 +37,8 @@ def majorityElement_Boyer_Moore(nums: list[int]) -> int | None:
     for n in nums:
         if count == 0:
             candidate = n
-        if n != candidate:
-            count -= 1
-        else:
+        if n == candidate:
             count += 1
+        else:
+            count -= 1
     return candidate

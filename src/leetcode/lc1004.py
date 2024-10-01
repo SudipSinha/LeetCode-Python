@@ -6,24 +6,22 @@ Given a binary array `nums` and an integer `k`, return the maximum number of con
 """
 
 
-class Solution:
-    def longestOnes_sw(self, nums: list[int], k: int) -> int:
-        """Sliding window approach.
-        Time complexity: O(n), space complexity: O(1).
-        """
+def longestOnes_sw(nums: list[int], k: int) -> int:
+    """Sliding window approach.
+    Time complexity: O(n), space complexity: O(1).
+    """
 
-        left = 0
-        right = 0
-        zeros = 0
-        subarray_len__max = 0
+    left = 0
+    right = 0
+    zeros = 0
+    subarray_len__max = 0
 
-        for right in range(len(nums)):
-            zeros += 1 - nums[right]
-            while zeros > k:
-                zeros -= 1 - nums[left]
-                left += 1
-            subarray_len = right - left + 1
-            if subarray_len > subarray_len__max:
-                subarray_len__max = subarray_len
+    for right in range(len(nums)):
+        zeros += 1 - nums[right]
+        while zeros > k:
+            zeros -= 1 - nums[left]
+            left += 1
+        subarray_len = right - left + 1
+        subarray_len__max = max(subarray_len, subarray_len__max)
 
-        return subarray_len__max
+    return subarray_len__max

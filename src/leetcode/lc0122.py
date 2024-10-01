@@ -10,11 +10,10 @@ Find and return the maximum profit you can achieve.
 """
 
 
-class Solution:
-    def maxProfit(self, prices: list[int]) -> int:
-        """Time complexity: O(n), space complexity: O(1)."""
-        profit__sum = 0
-        for date_buy in range(len(prices) - 1):
-            if prices[date_buy + 1] > prices[date_buy]:
-                profit__sum += prices[date_buy + 1] - prices[date_buy]
-        return profit__sum
+def maxProfit(prices: list[int]) -> int:
+    """Time complexity: O(n), space complexity: O(1)."""
+    profit__sum = 0
+    for date_buy in range(len(prices) - 1):
+        if prices[date_buy + 1] > prices[date_buy]:
+            profit__sum += prices[date_buy + 1] - prices[date_buy]
+    return profit__sum

@@ -6,7 +6,6 @@ Given a string `s`, reverse the order of characters in each word within a senten
 """
 
 
-class Solution:
-    def reverseWords(self, s: str) -> str:
-        words = s.split(" ")
-        return " ".join(word[::-1] for word in words)
+def reverseWords(s: str) -> str:
+    words = s.split(" ")
+    return " ".join(word[::-1] for word in words)

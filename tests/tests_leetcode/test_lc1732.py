@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc1732
 
 examples = [
@@ -9,5 +10,5 @@ examples = [
 
 @pytest.mark.parametrize("gain, output_true", examples)
 def test_largestAltitude(gain: list[int], output_true: int):
-    output_calc = lc1732.Solution().largestAltitude(gain=gain)
+    output_calc = lc1732.largestAltitude(gain=gain)
     assert output_calc == output_true

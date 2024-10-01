@@ -15,9 +15,6 @@ from collections import deque
 
 
 class RecentCounter:
-    n_requests: int
-    record_requests: deque[int]
-
     def __init__(self):
         self.n_requests = 0
         self.record_requests = deque()

@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0724
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_pivotIndex(nums: list[int], output_true: int):
-    output_calc = lc0724.Solution().pivotIndex(nums=nums)
+    output_calc = lc0724.pivotIndex(nums=nums)
     assert output_calc == output_true

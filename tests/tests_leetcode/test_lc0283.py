@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0283
 
 examples = [
@@ -10,11 +11,11 @@ examples = [
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_moveZeroes_2ptr_replacement(nums: list[int], output_true: list[int]):
-    lc0283.Solution().moveZeroes_2ptr_replacement(nums=nums)
+    lc0283.moveZeroes_2ptr_replacement(nums=nums)
     assert nums == output_true
 
 
 @pytest.mark.parametrize("nums, output_true", examples)
 def test_moveZeroes_2ptr_swap(nums: list[int], output_true: list[int]):
-    lc0283.Solution().moveZeroes_2ptr_swap(nums=nums)
+    lc0283.moveZeroes_2ptr_swap(nums=nums)
     assert nums == output_true

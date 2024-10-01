@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0322
 
 examples = [
@@ -10,11 +11,11 @@ examples = [
 
 @pytest.mark.parametrize("coins, amount, output_true", examples)
 def test_coinChange_dp(coins: list[int], amount: int, output_true: int):
-    output_calc = lc0322.Solution().coinChange_dp(coins=coins, amount=amount)
+    output_calc = lc0322.coinChange_dp(coins=coins, amount=amount)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("coins, amount, output_true", examples)
 def test_coinChange_bfs(coins: list[int], amount: int, output_true: int):
-    output_calc = lc0322.Solution().coinChange_bfs(coins=coins, amount=amount)
+    output_calc = lc0322.coinChange_bfs(coins=coins, amount=amount)
     assert output_calc == output_true

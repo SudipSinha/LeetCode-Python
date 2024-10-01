@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc0649
 
 examples = [
@@ -11,5 +12,5 @@ examples = [
 
 @pytest.mark.parametrize("senate, output_true", examples)
 def test_predictPartyVictory(senate: str, output_true: str):
-    output_calc = lc0649.Solution().predictPartyVictory(senate=senate)
+    output_calc = lc0649.predictPartyVictory(senate=senate)
     assert output_calc == output_true

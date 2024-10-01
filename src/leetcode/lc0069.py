@@ -10,25 +10,25 @@ For example, do not use `pow(x, 0.5)` in C++ or `x ** 0.5` in python.
 """
 
 
-class Solution:
-    def mySqrt_naive(self, x: int) -> int:
-        sqrt = 0
-        while sqrt * sqrt <= x:
-            sqrt += 1
-        return sqrt - 1
+def mySqrt_naive(x: int) -> int:
+    sqrt = 0
+    while sqrt * sqrt <= x:
+        sqrt += 1
+    return sqrt - 1
 
-    def mySqrt_binarysearch(self, x: int) -> int:
-        if x == 0 or x == 1:
-            return x
-        left = 0
-        right = x // 2
-        while left <= right:
-            mid = left + (right - left) // 2
-            sq = mid * mid
-            if sq == x:
-                return mid
-            elif sq < x:
-                left = mid + 1
-            else:
-                right = mid - 1
-        return right
+
+def mySqrt_binarysearch(x: int) -> int:
+    if x == 0 or x == 1:
+        return x
+    left = 0
+    right = x // 2
+    while left <= right:
+        mid = left + (right - left) // 2
+        sq = mid * mid
+        if sq == x:
+            return mid
+        elif sq < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return right

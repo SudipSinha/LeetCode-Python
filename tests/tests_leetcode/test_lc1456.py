@@ -1,4 +1,5 @@
 import pytest
+
 from leetcode import lc1456
 
 examples = [
@@ -10,5 +11,5 @@ examples = [
 
 @pytest.mark.parametrize("s, k, output_true", examples)
 def test_maxVowels_sw(s: str, k: int, output_true: int):
-    output_calc = lc1456.Solution().maxVowels_sw(s=s, k=k)
+    output_calc = lc1456.maxVowels_sw(s=s, k=k)
     assert output_calc == output_true

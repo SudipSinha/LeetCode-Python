@@ -8,23 +8,22 @@ Vowel letters in English are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`.
 """
 
 
-class Solution:
-    def maxVowels_sw(self, s: str, k: int) -> int:
-        """Sliding window approach.
-        Time complexity: O(n), space complexity: O(n).
-        """
-        vowels = {"A", "E", "I", "O", "U", "a", "e", "i", "o", "u"}
+def maxVowels_sw(s: str, k: int) -> int:
+    """Sliding window approach.
+    Time complexity: O(n), space complexity: O(n).
+    """
+    vowels = {"A", "E", "I", "O", "U", "a", "e", "i", "o", "u"}
 
-        n_vowels__cur = sum(1 for char in s[0:k] if char in vowels)
-        n_vowels__max = n_vowels__cur
+    n_vowels__cur = sum(1 for char in s[0:k] if char in vowels)
+    n_vowels__max = n_vowels__cur
 
-        for i in range(1, len(s) - k + 1):
-            if s[i - 1] in vowels:
-                n_vowels__cur -= 1
-            if s[i + k - 1] in vowels:
-                n_vowels__cur += 1
+    for i in range(1, len(s) - k + 1):
+        if s[i - 1] in vowels:
+            n_vowels__cur -= 1
+        if s[i + k - 1] in vowels:
+            n_vowels__cur += 1
 
-            if n_vowels__cur > n_vowels__max:
-                n_vowels__max = n_vowels__cur
+        if n_vowels__cur > n_vowels__max:
+            n_vowels__max = n_vowels__cur
 
-        return n_vowels__max
+    return n_vowels__max

@@ -8,12 +8,11 @@ The overall run time complexity should be `O(log (m+n))`.
 """
 
 
-class Solution:
-    def findMedianSortedArrays_naive(self, nums1: list[int], nums2: list[int]) -> float:
-        """Time complexity: O((m + n) log(m + n)), space complexity: O(m + n)."""
-        merged = sorted(nums1 + nums2)
-        n = len(merged)
-        if n % 2 == 1:
-            return merged[(n - 1) // 2]
-        else:
-            return (merged[n // 2 - 1] + merged[n // 2]) / 2
+def findMedianSortedArrays_naive(nums1: list[int], nums2: list[int]) -> float:
+    """Time complexity: O((m + n) log(m + n)), space complexity: O(m + n)."""
+    merged = sorted(nums1 + nums2)
+    n = len(merged)
+    if n % 2 == 1:
+        return merged[(n - 1) // 2]
+    else:
+        return (merged[n // 2 - 1] + merged[n // 2]) / 2

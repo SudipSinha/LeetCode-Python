@@ -8,13 +8,11 @@ You are given an integer array `gain` of length `n` where `gain[i]` is the net g
 """
 
 
-class Solution:
-    def largestAltitude(self, gain: list[int]) -> int:
-        """Time complexity: O(n), space complexity: O(1)."""
-        cumsum__cur = 0
-        cumsum__max = cumsum__cur
-        for delta in gain:
-            cumsum__cur += delta
-            if cumsum__cur > cumsum__max:
-                cumsum__max = cumsum__cur
-        return cumsum__max
+def largestAltitude(gain: list[int]) -> int:
+    """Time complexity: O(n), space complexity: O(1)."""
+    cumsum__cur = 0
+    cumsum__max = cumsum__cur
+    for delta in gain:
+        cumsum__cur += delta
+        cumsum__max = max(cumsum__cur, cumsum__max)
+    return cumsum__max
