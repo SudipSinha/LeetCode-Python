@@ -20,7 +20,7 @@ class BinaryTreeNode:
 
     def __eq__(self, other: object) -> bool:
         return (
-            isinstance(other, BinaryTreeNode)
+            isinstance(other, self.__class__)
             and self.data == other.data
             and self.left == other.left
             and self.right == other.right

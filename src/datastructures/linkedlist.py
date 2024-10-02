@@ -24,12 +24,12 @@ class ListNode:
         output = ""
         current: ListNode | None = self
         while current is not None:
-            output += f"ListNode({current.data}) → "
+            output += f"{self.__class__.__name__}({current.data}) → "
             current = current.successor
         return output + str(current)
 
     def __eq__(self, other: object) -> bool:
-        if not isinstance(other, ListNode):
+        if not isinstance(other, self.__class__):
             return False
         while self or other:
             if (self and not other) or (not self and other):
