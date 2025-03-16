@@ -25,7 +25,7 @@ class Solution:
         """Return a list version of the 2D array."""
         return numpy.apply_along_axis(
             func1d=lambda row: "".join(row), axis=0, arr=solution
-        ).tolist()
+        ).tolist()  # type: ignore
 
     @staticmethod
     def _valid(n: int, board: NDArray, row: int, col: int) -> bool:

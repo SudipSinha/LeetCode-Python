@@ -10,7 +10,7 @@ examples_list = [
 ]
 
 examples_linkedlist = [
-    tuple(ListNode.from_iterable(iterable=digits) for digits in example)  # type: ignore
+    tuple(ListNode().from_iterable(iterable=digits) for digits in example)  # type: ignore
     for example in examples_list
 ]
 

@@ -10,8 +10,8 @@
                 "lint",
                 "format",
                 "static type check",
-                "test coverage",
-                "pdm build",
+                "tests coverage",
+                "uv build",
             ],
             "dependsOrder": "sequence",
             "group": {
@@ -22,27 +22,27 @@
         {
             "label": "lint",
             "type": "shell",
-            "command": "pdm run ruff check --select I --fix src tests",
+            "command": "ruff check --select I --fix src tests",
         },
         {
             "label": "format",
             "type": "shell",
-            "command": "pdm run ruff format src tests",
+            "command": "ruff format src tests",
         },
         {
             "label": "static type check",
             "type": "shell",
-            "command": "pdm run mypy src tests",
+            "command": "uv run mypy src tests",
         },
         {
-            "label": "test coverage",
+            "label": "tests coverage",
             "type": "shell",
-            "command": "pdm run coverage run -m pytest && pdm run coverage report --show-missing",
+            "command": "uv run pytest",
         },
         {
-            "label": "pdm build",
+            "label": "uv build",
             "type": "shell",
-            "command": "pdm build",
+            "command": "uv build --quiet",
         },
     ]
 }

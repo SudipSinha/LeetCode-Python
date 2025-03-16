@@ -9,31 +9,25 @@ dependencies = [
     "numpy>=1.26.4",
     "ipykernel>=6.29.4",
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 readme = "README.md"
 license = {text = "Unlicense"}
 
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.dev-dependencies]
+[dependency-groups]
 test = [
-    "pytest>=8.0.0",
-    "coverage>=7.4.1",
-    "hypothesis>=6.98.3",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+    "hypothesis>=6.129.2",
 ]
-lint = [
-    "ruff>=0.2.1",
-    "mypy>=1.8.0",
-]
-doc = [
-    "mkdocs>=1.5.3",
+type-check = [
+    "mypy>=1.15.0",
 ]
 
-[tool.ruff]
-extend-include = ["*.ipynb"]
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+addopts = "--quiet --cov --cov-report term-missing:skip-covered"
+
+[tool.mypy]
+ignore_missing_imports = true

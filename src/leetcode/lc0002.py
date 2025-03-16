@@ -10,8 +10,10 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 from datastructures.linkedlist import ListNode
 
 
-def addTwoNumbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
-    sum_dummyhead = ListNode(data=0)
+def addTwoNumbers(
+    l1: ListNode[int] | None, l2: ListNode[int] | None
+) -> ListNode[int] | None:
+    sum_dummyhead = ListNode[int](data=0)
     ptr_ll__sum = sum_dummyhead  # Moving pointer.
     carry = 0
     while l1 or l2 or carry != 0:
@@ -24,8 +26,12 @@ def addTwoNumbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
             ptr_ll__sum.successor = l2
             break
         else:
-            digits__sum = carry + (l1.data if l1 else 0) + (l2.data if l2 else 0)
-            ptr_ll__sum.successor = ListNode(data=0)
+            digits__sum = (
+                carry
+                + (l1.data if l1 and l1.data else 0)
+                + (l2.data if l2 and l2.data else 0)
+            )
+            ptr_ll__sum.successor = ListNode[int](data=0)
             ptr_ll__sum = ptr_ll__sum.successor
             ptr_ll__sum.data = digits__sum % 10
             carry = digits__sum // 10
