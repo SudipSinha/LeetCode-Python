@@ -2,32 +2,21 @@
 name = "Programming_Python"
 version = "0.1.0"
 description = "My solutions to LeetCode and similar problems in Python"
-authors = [
-    {name = "Sudip Sinha", email = "SudipSinha.Bappa@Gmail.com"},
-]
-dependencies = [
-    "numpy>=1.26.4",
-    "ipykernel>=6.29.4",
-]
+authors = [{ name = "Sudip Sinha", email = "SudipSinha.Bappa@Gmail.com" }]
+dependencies = ["numpy>=1.26.4", "ipykernel>=6.29.4"]
 requires-python = ">=3.13"
 readme = "README.md"
-license = {text = "Unlicense"}
+license = { text = "Unlicense" }
 
 [dependency-groups]
-test = [
-    "pytest>=8.3.5",
-    "pytest-cov>=6.0.0",
-    "hypothesis>=6.129.2",
-]
-type-check = [
-    "mypy>=1.15.0",
-]
+test = ["pytest>=8.3.5", "pytest-cov>=6.0.0", "hypothesis>=6.129.2"]
 
 [tool.pytest.ini_options]
-pythonpath = [
-  "src"
-]
+pythonpath = ["src"]
+testpaths = ["tests"]
+required_plugins = ["pytest-cov"]
 addopts = "--quiet --cov --cov-report term-missing:skip-covered"
 
 [tool.mypy]
+python_executable = ".venv/bin/python"
 ignore_missing_imports = true
