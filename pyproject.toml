@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "My solutions to LeetCode and similar problems in Python"
 authors = [{ name = "Sudip Sinha", email = "SudipSinha.Bappa@Gmail.com" }]
 dependencies = ["numpy>=1.26.4", "ipykernel>=6.29.4"]
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 readme = "README.md"
 license = { text = "Unlicense" }
 
