@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "Unlicense" }
 
 [dependency-groups]
-test = ["pytest>=8.3.5", "pytest-cov>=6.0.0", "hypothesis>=6.129.2"]
+test = ["pytest>=9.0.3", "pytest-cov>=6.0.0", "hypothesis>=6.129.2"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
