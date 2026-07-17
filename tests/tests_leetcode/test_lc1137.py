@@ -3,6 +3,9 @@ import pytest
 from leetcode import lc1137
 
 examples = [
+    (0, 0),
+    (1, 1),
+    (2, 1),
     (4, 4),
     (25, 1389537),
 ]

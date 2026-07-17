@@ -34,7 +34,8 @@ class Solution:
         not_in_box = (
             value
             not in self.grid[
-                row // 3 * 3 : row // 3 * 3 + 3, col // 3 * 3 : col // 3 * 3 + 3
+                row // 3 * 3 : row // 3 * 3 + 3,
+                col // 3 * 3 : col // 3 * 3 + 3,
             ]
         )
         return not_in_row and not_in_column and not_in_box

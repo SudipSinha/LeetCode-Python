@@ -15,7 +15,7 @@ directions = {(-1, 0), (0, -1), (1, 0), (0, 1)}  # Up, left, down, right.
 def _search(grid: list[list[int]], row: int = 0, col: int = 0) -> int:
     rows = len(grid)
     cols = len(grid[0])
-    if row < 0 or row > rows - 1 or col < 0 or col > cols - 1:
+    if row < 0 or row == rows or col < 0 or col == cols:
         return 0  # Out of range.
     if grid[row][col] == 0 or grid[row][col] == -1:
         return 0  # No island or visited.

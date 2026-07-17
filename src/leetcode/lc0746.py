@@ -10,13 +10,15 @@ Return the minimum cost to reach the top of the floor.
 """
 
 from functools import cache
+from sys import maxsize  # ∞
 
 
-def minCostClimbingStairs_cache(cost: list[int]) -> int:
+def minCostClimbingStairs_forward_cache(cost: list[int]) -> int:
     """Time complexity: O(n), space complexity: O(n)."""
 
     @cache
     def _cost(pos: int) -> int:
+        """Minimum cost to reach the top of the stairs starting at position `i`."""
         if pos >= len(cost):
             return 0
         return cost[pos] + min(_cost(pos + 1), _cost(pos + 2))
@@ -24,14 +26,13 @@ def minCostClimbingStairs_cache(cost: list[int]) -> int:
     return min(_cost(0), _cost(1))
 
 
-def minCostClimbingStairs_array(cost: list[int]) -> int:
+def minCostClimbingStairs_forward_array(cost: list[int]) -> int:
     """Time complexity: O(n), space complexity: O(n)."""
-    infinity = sum(cost) + 1
-    cost__min = [infinity] * (len(cost) + 2)
+    cost__min = [maxsize] * (len(cost) + 2)
 
     def _cost(pos: int) -> int:
         nonlocal cost__min
-        if cost__min[pos] != infinity:
+        if cost__min[pos] != maxsize:
             return cost__min[pos]
         if pos >= len(cost):
             cost__min[pos] = 0
@@ -40,3 +41,15 @@ def minCostClimbingStairs_array(cost: list[int]) -> int:
         return cost__min[pos]
 
     return min(_cost(0), _cost(1))
+
+
+def minCostClimbingStairs_backward_cache(cost: list[int]) -> int:
+    """Time complexity: O(n), space complexity: O(n)."""
+
+    @cache
+    def _aux(pos: int) -> int:
+        if pos <= 1:
+            return 0
+        return min(_aux(pos - 1) + cost[pos - 1], _aux(pos - 2) + cost[pos - 2])
+
+    return _aux(len(cost))

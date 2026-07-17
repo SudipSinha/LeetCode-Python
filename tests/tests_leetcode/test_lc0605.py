@@ -9,6 +9,12 @@ examples = [
 
 
 @pytest.mark.parametrize("flowerbed, n, output_true", examples)
-def test_canPlaceFlowers(flowerbed: list[int], n: int, output_true: bool):
-    output_calc = lc0605.canPlaceFlowers(flowerbed=flowerbed, n=n)
+def test_canPlaceFlowers_naive(flowerbed: list[int], n: int, output_true: bool):
+    output_calc = lc0605.canPlaceFlowers_naive(flowerbed=flowerbed, n=n)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("flowerbed, n, output_true", examples)
+def test_canPlaceFlowers_string(flowerbed: list[int], n: int, output_true: bool):
+    output_calc = lc0605.canPlaceFlowers_string(flowerbed=flowerbed, n=n)
     assert output_calc == output_true

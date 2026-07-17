@@ -24,7 +24,9 @@ class Solution:
     def _format_solution(solution: NDArray) -> list[str]:
         """Return a list version of the 2D array."""
         return numpy.apply_along_axis(
-            func1d=lambda row: "".join(row), axis=0, arr=solution
+            func1d=lambda row: "".join(row),
+            axis=0,
+            arr=solution,
         ).tolist()  # type: ignore
 
     @staticmethod
@@ -52,7 +54,7 @@ class Solution:
         search_rows: list[int],
         search_cols: list[int],
     ) -> None:
-        """Auxillary method for solving using backtracking.
+        """Auxiliary method for solving using backtracking.
         Time complexity: O(n!), space complexity: O(n)."""
 
         if not search_rows or not search_cols:  # Base case.

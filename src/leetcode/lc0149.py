@@ -11,7 +11,8 @@ from math import inf, isfinite
 
 
 def _get_line_parameters(
-    point1: tuple[int, int], point2: tuple[int, int]
+    point1: tuple[int, int],
+    point2: tuple[int, int],
 ) -> tuple[Fraction | float, Fraction]:
     (x1, y1) = point1
     (x2, y2) = point2
@@ -40,7 +41,8 @@ def maxPoints_line_2d(points: list[tuple[int, int]]) -> int:
 
     #   Winning line.
     (winner_slope, winner_intercept) = max(
-        parameters, key=lambda line: parameters[line]
+        parameters,
+        key=lambda line: parameters[line],
     )
 
     #   How many points fall on this line?

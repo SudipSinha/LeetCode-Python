@@ -28,9 +28,9 @@ def equalPairs_naive(grid: list[list[int]]) -> int:
 
 def equalPairs_conjugate(grid: list[list[int]]) -> int:
     """Idea stolen from: https://leetcode.com/problems/equal-row-and-column-pairs/solutions/2328910/python3-3-lines-transpose-ctr-w-explanation-t-m-97-100
-    Time complexity: O(n^3), space complexity: O(n^2).
+    Time complexity: O(n), space complexity: O(n^2).
     """
     conjugate = zip(*grid)
-    count_grid = Counter(map(tuple, grid))
+    count_grid = Counter(map(tuple, grid))  # Convert to tuple for hashability.
     count_conj = Counter(conjugate)
-    return sum(count_conj[row] * count_grid[row] for row in count_conj)
+    return sum(count_grid[row] * count_conj[row] for row in count_grid)

@@ -11,13 +11,16 @@ from leetcode import lc1143
 
 
 def longestPalindromeSubseq_lcs(s: str) -> int:
-    """Relies on longest common subsequence."""
-    lcs = lc1143.longestCommonSubsequence_first(text1=s, text2=s[::-1])
-    return lcs["length"]
+    """Relies on longest common subsequence.
+    Time complexity: O(n^2), space complexity: O(n^2).
+    """
+    return lc1143.longestCommonSubsequence_length(text1=s, text2=s[::-1])
 
 
 def longestPalindromeSubseq_dp(s: str) -> int:
-    """Relies on idea from the longest palindromic substring."""
+    """Relies on idea from the longest palindromic substring.
+    Time complexity: O(n^2), space complexity: O(n^2).
+    """
     if not s:
         return 0
 
@@ -25,7 +28,7 @@ def longestPalindromeSubseq_dp(s: str) -> int:
     for i in range(len(s)):
         cache[i][i] = 1
 
-    def _lps_aux(left: int = 0, right: int = len(s) - 1) -> int:
+    def _aux(left: int = 0, right: int = len(s) - 1) -> int:
         nonlocal cache
 
         if left < 0 or right == len(s) or left > right:
@@ -33,15 +36,13 @@ def longestPalindromeSubseq_dp(s: str) -> int:
 
         if s[left] == s[right]:
             length = 1 if left == right else 2
-            cache[left][right] = length + _lps_aux(left - 1, right + 1)
+            cache[left][right] = length + _aux(left - 1, right + 1)
         else:
-            cache[left][right] = max(
-                _lps_aux(left - 1, right), _lps_aux(left, right + 1)
-            )
+            cache[left][right] = max(_aux(left - 1, right), _aux(left, right + 1))
         return cache[left][right]
 
     for i in range(len(s)):
-        _lps_aux(i, i)  # Base case: single character.
-        _lps_aux(i, i + 1)  # Base case: two characters.
+        _aux(i, i)  # Base case: single character.
+        _aux(i, i + 1)  # Base case: two characters.
 
     return max(max(row) for row in cache)

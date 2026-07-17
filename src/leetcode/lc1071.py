@@ -1,6 +1,6 @@
 """Greatest Common Divisor of Strings
 
-Link:
+Link: https://leetcode.com/problems/greatest-common-divisor-of-strings/
 
 For two strings `s` and `t`, we say "`t` divides `s`" if and only if `s = t + t + t + ... + t + t` (i.e., `t` is concatenated with itself one or more times).
 
@@ -20,14 +20,17 @@ def divide(dividend: str, divisor: str) -> dict[str, int | str]:
 
 
 def gcdOfStrings(str1: str, str2: str) -> str:
+    """Euclidean algorithm for strings.
+    https://en.wikipedia.org/wiki/Euclidean_algorithm
+    """
     (dividend, divisor) = (str1, str2) if len(str1) >= len(str2) else (str2, str1)
     (quotient, remainder) = itemgetter("quotient", "remainder")(
-        divide(dividend, divisor)
+        divide(dividend, divisor),
     )
     while quotient != 0 and remainder != "":
         dividend = divisor
         divisor = remainder
         (quotient, remainder) = itemgetter("quotient", "remainder")(
-            divide(dividend, divisor)
+            divide(dividend, divisor),
         )
     return divisor if quotient != 0 else ""

@@ -9,6 +9,12 @@ examples = [
 
 
 @pytest.mark.parametrize("grid, output_true", examples)
-def test_minPathSum(grid: list[list[int]], output_true: int):
-    output_calc = lc0064.minPathSum(grid=grid)
+def test_minPathSum_forward(grid: list[list[int]], output_true: int):
+    output_calc = lc0064.minPathSum_forward(grid=grid)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("grid, output_true", examples)
+def test_minPathSum_backward(grid: list[list[int]], output_true: int):
+    output_calc = lc0064.minPathSum_backward(grid=grid)
     assert output_calc == output_true

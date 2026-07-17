@@ -9,12 +9,18 @@ examples = [
 
 
 @pytest.mark.parametrize("cost, output_true", examples)
-def test_minCostClimbingStairs_cache(cost: list[int], output_true: int):
-    output_calc = lc0746.minCostClimbingStairs_cache(cost=cost)
+def test_minCostClimbingStairs_forward_cache(cost: list[int], output_true: int):
+    output_calc = lc0746.minCostClimbingStairs_forward_cache(cost=cost)
     assert output_calc == output_true
 
 
 @pytest.mark.parametrize("cost, output_true", examples)
-def test_minCostClimbingStairs_array(cost: list[int], output_true: int):
-    output_calc = lc0746.minCostClimbingStairs_array(cost=cost)
+def test_minCostClimbingStairs_forward_array(cost: list[int], output_true: int):
+    output_calc = lc0746.minCostClimbingStairs_forward_array(cost=cost)
+    assert output_calc == output_true
+
+
+@pytest.mark.parametrize("cost, output_true", examples)
+def test_minCostClimbingStairs_backward_cache(cost: list[int], output_true: int):
+    output_calc = lc0746.minCostClimbingStairs_backward_cache(cost=cost)
     assert output_calc == output_true

@@ -32,7 +32,8 @@ def uniquePathsWithObstacles(obstacleGrid: list[list[int]]) -> int:
             paths[row][col] = uniquePaths_aux(row=row - 1, col=col)
             return paths[row][col]
         paths[row][col] = uniquePaths_aux(row=row - 1, col=col) + uniquePaths_aux(
-            row=row, col=col - 1
+            row=row,
+            col=col - 1,
         )
         return paths[row][col]
 

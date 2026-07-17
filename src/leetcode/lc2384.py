@@ -23,7 +23,7 @@ def largestPalindromic(num: str) -> str:
     for d in sorted(digits_counter, reverse=True):
         if len(start) > 0 or (d != "0" and digits_counter[d] >= 2):
             start.append(d * (digits_counter[d] // 2))
-        if digits_counter[d] % 2 == 1 and not reserve:
+        if not reserve and digits_counter[d] % 2 == 1:
             reserve = d  # Save for the middle element
     merged = "".join(start + [reserve if reserve else ""] + start[::-1])
     if not merged and num:

@@ -45,15 +45,15 @@ def fib_dp_list(n: int) -> int:
     if n in {0, 1}:
         return n
 
-    memo = [0 for _ in range(n + 1)]  # n -> Fib(n)
-    memo[1] = 1
+    cache = [0 for _ in range(n + 1)]  # n -> Fib(n)
+    cache[1] = 1
 
     def fib_dp_aux(m: int):
-        nonlocal memo
+        nonlocal cache
         if m in {0, 1}:
             return m
-        memo[m] = fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
-        return memo[m]
+        cache[m] = fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
+        return cache[m]
 
     return fib_dp_aux(n)
 
@@ -62,12 +62,12 @@ def fib_dp_dict(n: int) -> int:
     """Dynamic programming solution.
     Time complexity: O(n), space complexity: O(1).
     """
-    memo = {0: 0, 1: 1}  # n -> Fib(n)
+    cache = {0: 0, 1: 1}  # n -> Fib(n)
 
     def fib_dp_aux(m: int):
-        nonlocal memo
-        if m in memo:
-            return memo[m]
+        nonlocal cache
+        if m in cache:
+            return cache[m]
         return fib_dp_aux(m - 1) + fib_dp_aux(m - 2)
 
     return fib_dp_aux(n)

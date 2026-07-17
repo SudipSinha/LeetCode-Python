@@ -1,7 +1,7 @@
 /* Bank Account Summary
 
 Link: https://leetcode.com/problems/bank-account-summary/
- 
+
 Table: `Users`
 
 +--------------+---------+

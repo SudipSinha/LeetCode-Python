@@ -1,5 +1,7 @@
 def zero_one_knapsack(
-    values: list[float], weights: list[float], weight__max: float
+    values: list[float],
+    weights: list[float],
+    weight__max: float,
 ) -> set[int]:
     """Dynamic programming solution.
     Time complexity: O(nw), space complexity: O(nw).
@@ -22,7 +24,8 @@ def zero_one_knapsack(
             return memo[(items, reduced_weight_limit)]
         if reduced_weight_limit < weights[items - 1]:
             memo[(items, reduced_weight_limit)] = _value_max(
-                items - 1, reduced_weight_limit
+                items - 1,
+                reduced_weight_limit,
             )
             return memo[(items, reduced_weight_limit)]
         memo[(items, reduced_weight_limit)] = max(
@@ -49,6 +52,8 @@ def zero_one_knapsack(
 
 print(
     zero_one_knapsack(
-        values=[7, 9, 5, 12, 14, 6, 12], weights=[3, 4, 2, 6, 7, 3, 5], weight__max=15
-    )
+        values=[7, 9, 5, 12, 14, 6, 12],
+        weights=[3, 4, 2, 6, 7, 3, 5],
+        weight__max=15,
+    ),
 )

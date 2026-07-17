@@ -11,7 +11,7 @@ The solution set must not contain duplicate subsets. Return the solution in any 
 def subsets(nums: set[int]) -> set[frozenset[int]]:
     nums_list = list(nums)
     subsets: set[frozenset[int]] = set()
-    subset__cur: list[int] = list()
+    subset__cur: list[int] = []
 
     def _dfs(index: int):
         nonlocal subsets
@@ -22,7 +22,7 @@ def subsets(nums: set[int]) -> set[frozenset[int]]:
         #   Branch for adding indexed element.
         subset__cur.append(nums_list[index])
         _dfs(index=index + 1)
-        # Branch for ignoring indexed element.
+        #   Branch for ignoring indexed element.
         subset__cur.pop()
         _dfs(index=index + 1)
 

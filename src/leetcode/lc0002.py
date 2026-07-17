@@ -11,7 +11,8 @@ from datastructures.linkedlist import ListNode
 
 
 def addTwoNumbers(
-    l1: ListNode[int] | None, l2: ListNode[int] | None
+    l1: ListNode[int] | None,
+    l2: ListNode[int] | None,
 ) -> ListNode[int] | None:
     sum_dummyhead = ListNode[int](data=0)
     ptr_ll__sum = sum_dummyhead  # Moving pointer.

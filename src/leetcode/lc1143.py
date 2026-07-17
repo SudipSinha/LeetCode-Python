@@ -10,6 +10,7 @@ For example, `"ace"` is a subsequence of `"abcde"`.
 A common subsequence of two strings is a subsequence that is common to both strings.
 """
 
+from functools import cache
 from typing import TypedDict
 
 import numpy
@@ -18,6 +19,30 @@ import numpy
 class LCS(TypedDict):
     length: int
     subseq: str
+
+
+def longestCommonSubsequence_length(text1: str, text2: str) -> int:
+    """Idea: Dynamic programming.
+    Let s and t be the two strings and i and j denote indices of s and t, respectively.
+    Let f(i, j) denote the length of the longest common subsequence between substrings s[1:i] and s[1:j].
+    A recurrence relation can be defined as follows:
+    *   Base case: f(i, j) = 0 if i == 0 or j == 0.
+    *   Recurrence relation: There are two cases:
+        1.  If s[i] == t[j], then f(i, j) = 1 + f(i - 1, j - 1).
+        2.  If s[i] != t[j], then f(i, j) = max(f(i - 1, j), f(i, j - 1)), since we can either compare s[1:i-1] and t[1:j] or s[1:i] and t[1:j-1].
+    Time complexity: O(mn), space complexity: O(mn).
+    """
+
+    @cache
+    def _aux(i: int, j: int):
+        if i == -1 or j == -1:
+            return 0
+        if text1[i] == text2[j]:
+            return 1 + _aux(i - 1, j - 1)
+        else:
+            return max(_aux(i - 1, j), _aux(i, j - 1))
+
+    return _aux(len(text1) - 1, len(text2) - 1)
 
 
 def longestCommonSubsequence_first(text1: str, text2: str) -> LCS:

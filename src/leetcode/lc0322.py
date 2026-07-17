@@ -1,6 +1,6 @@
 from collections import deque
 from functools import cache
-from sys import maxsize
+from sys import maxsize  # ∞
 
 
 def coinChange_dp(coins: list[int], amount: int) -> int:

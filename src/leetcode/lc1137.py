@@ -13,6 +13,7 @@ Given `n`, return the value of `T_n`.
 def tribonacci_hashmap(n: int) -> int:
     """Time complexity: O(n), space complexity: O(n)."""
 
+    assert n >= 0, "Input must be a whole number."
     cache = {0: 0, 1: 1, 2: 1}
 
     def _inner(n: int = n) -> int:
@@ -27,14 +28,14 @@ def tribonacci_hashmap(n: int) -> int:
 def tribonacci_iter(n: int) -> int:
     """Time complexity: O(n), space complexity: O(1)."""
 
-    if n == 0:
-        return 0
-    elif n in {1, 2}:
-        return 1
+    assert n >= 0, "Input must be a whole number."
+    cache = {0: 0, 1: 1, 2: 1}
+    if n in cache:
+        return cache[n]
 
-    minus1 = 0
-    minus2 = 1
-    minus3 = 1
+    minus1 = cache[0]
+    minus2 = cache[1]
+    minus3 = cache[2]
     curr = 0
 
     for _ in range(3, n + 1):

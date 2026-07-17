@@ -19,7 +19,8 @@ def minimumTotal_recur_inner(triangle: list[list[int]]) -> int:
         if row == len(triangle) - 1:
             return triangle[row][col]
         return triangle[row][col] + min(
-            path_sum__min(row=row + 1, col=col), path_sum__min(row=row + 1, col=col + 1)
+            path_sum__min(row=row + 1, col=col),
+            path_sum__min(row=row + 1, col=col + 1),
         )
 
     return path_sum__min()
@@ -27,7 +28,9 @@ def minimumTotal_recur_inner(triangle: list[list[int]]) -> int:
 
 @cache
 def minimumTotal_recur_1fn(
-    triangle: tuple[tuple[int]], row: int = 0, col: int = 0
+    triangle: tuple[tuple[int]],
+    row: int = 0,
+    col: int = 0,
 ) -> int:
     """Time complexity: O(n), space complexity: O(n)."""
     if row == len(triangle) - 1:
@@ -46,7 +49,8 @@ def minimumTotal_iter(triangle: list[list[int]]) -> int:
     for i in range(len(triangle) - 2, -1, -1):
         for j, _ in enumerate(path_sum__min[i]):
             path_sum__min[i][j] += min(
-                path_sum__min[i + 1][j], path_sum__min[i + 1][j + 1]
+                path_sum__min[i + 1][j],
+                path_sum__min[i + 1][j + 1],
             )
 
     return path_sum__min[0][0]

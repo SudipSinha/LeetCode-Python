@@ -7,6 +7,7 @@ Given an array of `intervals` where `intervals[i] = [start_i, end_i]`, merge all
 
 
 def merge(intervals: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    """Time complexity: O(n⋅log(n)), space complexity: O(n)."""
     merged = []
     intervals.sort(key=lambda x: x[0])
     (start__cur, end__cur) = intervals[0]

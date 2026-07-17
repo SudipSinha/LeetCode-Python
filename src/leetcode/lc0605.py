@@ -8,10 +8,17 @@ Given an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means e
 """
 
 
-def canPlaceFlowers(flowerbed: list[int], n: int) -> bool:
+def canPlaceFlowers_string(flowerbed: list[int], n: int) -> bool:
     """Idea: for n consecutive empty slots, maximum flowers that can be planted is floor((n-1)/2).
+    For ends, 00 should be treated as 000, so we add 0 at both ends.
     Time complexity: O(n), space complexity: O(1).
     """
+    empty_beds = ("0" + "".join(map(str, flowerbed)) + "0").split("1")
+    return n <= sum((len(bed) - 1) // 2 for bed in empty_beds if bed)
+
+
+def canPlaceFlowers_naive(flowerbed: list[int], n: int) -> bool:
+    """Time complexity: O(n), space complexity: O(1)."""
     if len(flowerbed) == 1:
         return (flowerbed[0] == 0 and n in {0, 1}) or (flowerbed[0] == 1 and n == 0)
     if flowerbed[0] == 0 and flowerbed[1] == 0:

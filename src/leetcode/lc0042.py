@@ -27,15 +27,15 @@ def trap_2ptr(height: list[int]) -> int:
     if not height:
         return 0
     capacity = 0
-    (left, right) = 0, len(height) - 1
-    (max_left, max_right) = (height[left], height[right])
+    (left, right) = (0, len(height) - 1)
+    (max_height__left, max_height__right) = (height[left], height[right])
     while left < right:
-        if max_left <= max_right:
+        if max_height__left <= max_height__right:
             left += 1
-            max_left = max(max_left, height[left])
-            capacity += max_left - height[left]
+            max_height__left = max(max_height__left, height[left])
+            capacity += max_height__left - height[left]
         else:
             right -= 1
-            max_right = max(max_right, height[right])
-            capacity += max_right - height[right]
+            max_height__right = max(max_height__right, height[right])
+            capacity += max_height__right - height[right]
     return capacity

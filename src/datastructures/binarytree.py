@@ -60,10 +60,10 @@ class BinaryTreeNode:
 
         root = BinaryTreeNode(nums[0])
         root.left = cls.from_list_long_recur(
-            nums=[n for (i, n) in enumerate(nums) if i % 2 == 1]
+            nums=[n for (i, n) in enumerate(nums) if i % 2 == 1],
         )
         root.right = cls.from_list_long_recur(
-            nums=[n for (i, n) in enumerate(nums) if i != 0 and i % 2 == 0]
+            nums=[n for (i, n) in enumerate(nums) if i != 0 and i % 2 == 0],
         )
         return root
 
@@ -126,6 +126,7 @@ class BinaryTreeNode:
             self.right.invert()
 
     def rightSideView(self) -> list[int]:
+        """In the spirit of breath-first search (BFS)."""
         if not self:
             return []
         rsv: list[int] = []
@@ -210,7 +211,7 @@ class BinaryTreeNode:
                 depth_max__right = cache_depth_max[id(root.right)]
                 diameter__right = _diameter_inner(root=root.right)
             return max(
-                [depth_max__left + depth_max__right, diameter__left, diameter__right]
+                [depth_max__left + depth_max__right, diameter__left, diameter__right],
             )
 
         return _diameter_inner(root=self)
@@ -229,8 +230,8 @@ class BinaryTreeNode:
                 return 0
             depth_max__left = _maxDepth_dfs(root=root.left)
             depth_max__right = _maxDepth_dfs(root=root.right)
-            diameter_cur = depth_max__left + depth_max__right
-            diameter__max = max(diameter_cur, diameter__max)
+            diameter__cur = depth_max__left + depth_max__right
+            diameter__max = max(diameter__cur, diameter__max)
             return 1 + max(depth_max__left, depth_max__right)
 
         _maxDepth_dfs()

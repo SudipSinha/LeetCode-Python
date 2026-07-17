@@ -15,7 +15,7 @@ directions = {(-1, 0), (0, -1), (1, 0), (0, 1)}  # Up, left, down, right.
 
 def _mark_visited_dfs_recursive(grid, row: int, col: int, islands: int = 0):
     """Depth-first search method to marks the visited nodes.
-    Visited nodes are marked with `In`, where `n` is the island number.
+    Visited nodes are marked with `I#`, where # is the island number.
     """
     if not (0 <= row < len(grid) and 0 <= col < len(grid[0])) or grid[row][col] != "1":
         return
@@ -29,7 +29,7 @@ def _mark_visited_dfs_recursive(grid, row: int, col: int, islands: int = 0):
 
 def _mark_visited_dfs_iterative(grid, row: int, col: int, islands: int = 0):
     """Depth-first search method to marks the visited nodes.
-    Visited nodes are marked with `In`, where `n` is the island number.
+    Visited nodes are marked with `I#`, where # is the island number.
     """
     if not (0 <= row < len(grid) and 0 <= col < len(grid[0])) or grid[row][col] != "1":
         return
@@ -54,7 +54,7 @@ def _mark_visited_dfs_iterative(grid, row: int, col: int, islands: int = 0):
 
 def _mark_visited_bfs(grid, row: int, col: int, islands: int = 0):
     """Breadth-first search method to marks the visited nodes.
-    Visited nodes are marked with `In`, where `n` is the island number.
+    Visited nodes are marked with `I#`, where # is the island number.
     """
     if not (0 <= row < len(grid) and 0 <= col < len(grid[0])) or grid[row][col] != "1":
         return

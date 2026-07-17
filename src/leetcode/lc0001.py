@@ -35,7 +35,7 @@ def twoSum_hashmap_1pass(nums: list[int], target: int) -> set[int]:
     hashmap: dict[int, int] = {}
     for i in range(len(nums)):
         complement = target - nums[i]
-        if complement in hashmap and hashmap[complement] != i:
+        if complement in hashmap:
             return {i, hashmap[complement]}
         hashmap[nums[i]] = i
     return set()

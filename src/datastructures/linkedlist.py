@@ -19,7 +19,8 @@ class ListNode(Generic[T]):
         TODO: Does not work as of now.
         """
         if hasattr(
-            self, "__orig_class__"
+            self,
+            "__orig_class__",
         ):  # Only available for instances of a generic class
             return get_args(self.__orig_class__)[0]
         return Any  # Default if not a generic instance
@@ -75,7 +76,9 @@ class ListNode(Generic[T]):
 
     @classmethod
     def merge_alternate(
-        cls, head1: ListNode[T] | None, head2: ListNode[T] | None
+        cls,
+        head1: ListNode[T] | None,
+        head2: ListNode[T] | None,
     ) -> ListNode[T] | None:
         """Merged linked list that alternates between the two arguments."""
         pointer1 = head1
@@ -127,22 +130,22 @@ class ListNode(Generic[T]):
         updated = ListNode[T](data=element)
         updated.successor = self
         self.__dict__ = deepcopy(
-            updated.__dict__
+            updated.__dict__,
         )  # https://stackoverflow.com/a/29591356/1369696
 
     def append(self, element: T | None) -> None:
         """Append at the end in-place."""
-        current = self
-        while current.successor is not None:
-            current = current.successor
-        current.successor = ListNode[T](data=element)
+        curr = self
+        while curr.successor is not None:
+            curr = curr.successor
+        curr.successor = ListNode[T](data=element)
 
     def popleft(self) -> T | None:
-        first = self.data
+        head_data = self.data
         self.__dict__ = deepcopy(
-            self.successor.__dict__
+            self.successor.__dict__,
         )  # https://stackoverflow.com/a/29591356/1369696
-        return first
+        return head_data
 
     def pop(self) -> T | None:
         prev = None

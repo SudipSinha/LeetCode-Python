@@ -18,7 +18,8 @@ def argmax(nums: list[int], candidates: list[int] | None = None) -> int:
     if not candidates:
         candidates = list(range(len(nums)))
     return max(
-        range(len(nums)), key=lambda index: nums[index] if index in candidates else -1
+        range(len(nums)),
+        key=lambda index: nums[index] if index in candidates else -1,
     )
 
 
@@ -26,7 +27,7 @@ def argmax(nums: list[int], candidates: list[int] | None = None) -> int:
 def lengthOfLIS_dp(nums: list[int]) -> LIS:
     """Dynamic programming solution.
     Idea: https://cp-algorithms.com/sequences/longest_increasing_subsequence.html
-    Recurrence relation: LIS(k) = max{1, 1 + max_{j < k, v_j < v_k} {LIS(j)}}.
+    Recurrence relation: f(k) = max{1, 1 + max_{j < k, v_j < v_k} {f(j)}}.
     Time complexity: O(n^2), space complexity: O(n^2).
     The space complexity can be reduced to O(n) if the LIS is not required.
     It can also be reduced by using backtracking to get the LIS.
